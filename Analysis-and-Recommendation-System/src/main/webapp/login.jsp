@@ -11,6 +11,7 @@
     <title>登录界面</title>
     <style>
         /* 设置背景图片样式 */
+        /* github+idea*/
         body {
             background-image: url('./images/数据大屏背景/bg.jpg');
             background-size: cover;
