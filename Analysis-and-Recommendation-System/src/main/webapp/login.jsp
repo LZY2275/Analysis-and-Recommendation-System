@@ -43,7 +43,7 @@
 
         /* 设置动画样式 */
         .animated-image {
-            animation: squash 1s linear infinite;
+            animation: squash 0.8s linear infinite;
             animation-iteration-count: 1; /* 设置动画只执行一次 */
             width: 100%;
             height: 100%;
@@ -51,19 +51,16 @@
 
         @keyframes squash {
             0% {
-                transform: scaleY(1); /* 初始状态为正常大小 */
-            }
-            25% {
-                transform: scaleY(0.5); /* 中间状态为压扁 */
+                transform: scaleX(1); /* 最终状态为还原 */
+                transform: scaleY(1);
             }
             50% {
-                transform: scaleY(1); /* 最终状态为还原 */
-            }
-            75% {
-                transform: scaleX(0.5); /* 初始状态为正常大小 */
+                transform: scaleY(0.3);
+                transform: scaleX(1.3);
             }
             100% {
                 transform: scaleX(1); /* 最终状态为还原 */
+                transform: scaleY(1);
             }
         }
 
