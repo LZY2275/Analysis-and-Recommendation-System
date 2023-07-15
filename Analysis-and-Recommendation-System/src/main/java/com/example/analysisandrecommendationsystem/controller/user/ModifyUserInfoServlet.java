@@ -69,6 +69,7 @@ public class ModifyUserInfoServlet extends HttpServlet {
 //       request.getRequestDispatcher("/list").forward(request,response);
     }
 
+//    将util转换成sql.date
     private Date stringtoDate(String dateString) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date date = sdf.parse(dateString);

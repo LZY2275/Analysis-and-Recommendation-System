@@ -1,7 +1,10 @@
 package com.example.analysisandrecommendationsystem.controller.user;
 
+import com.example.analysisandrecommendationsystem.entity.Administrator;
 import com.example.analysisandrecommendationsystem.entity.User;
+import com.example.analysisandrecommendationsystem.service.AdminService;
 import com.example.analysisandrecommendationsystem.service.UserService;
+import com.example.analysisandrecommendationsystem.service.impl.AdminServiceImpl;
 import com.example.analysisandrecommendationsystem.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
@@ -18,16 +21,34 @@ public class LoginServlet extends HttpServlet {
 
         String name = request.getParameter("name");
         String password = request.getParameter("password");
-        UserService userService = new UserServiceImpl();
-        User user = userService.login(name, password);
-        if (user.getUsername() != null && !user.getUsername().equals("") && user.getPassword() != null && !user.getPassword().equals("")) {
-            request.getSession().setAttribute("user", user);
+        String role = request.getParameter("role");
+//        若role为null，则代表是用户登录，否则代表为管理员登录
+        if(role != null && role.equals("admin")){
+
+            AdminService adminService = new AdminServiceImpl();
+            Administrator administrator = adminService.login(name, password);
+            if(administrator.getAdminname() != null && !administrator.getAdminname().equals("") && administrator.getPassword() != null && !administrator.getPassword().equals("")){
+                request.getSession().setAttribute("admin",administrator);
+                System.out.println("管理员登录成功");
+            }else {
+                request.getRequestDispatcher("/logintest.jsp").forward(request,response);
+            }
+        }
+        else {
+            UserService userService = new UserServiceImpl();
+            User user = userService.login(name, password);
+            if (user.getUsername() != null && !user.getUsername().equals("") && user.getPassword() != null && !user.getPassword().equals("")) {
+                request.getSession().setAttribute("user", user);
+                request.getRequestDispatcher("/adlist").forward(request,response);
 //            调用其他的方法
 //            request.getRequestDispatcher("/list").forward(request, response);
 //            System.out.println("登陆成功");
 //            System.out.println(user.getBirthday());
-        } else {
-            request.getRequestDispatcher("/logintest.jsp").forward(request,response);
+            } else {
+                request.getRequestDispatcher("/logintest.jsp").forward(request,response);
+            }
         }
     }
+
+
 }

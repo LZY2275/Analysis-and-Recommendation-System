@@ -7,6 +7,9 @@ drop table if exists enrollmentinfo;
 drop table if exists hotspot;
 drop table if exists schmaj;
 drop table if exists majorinfo;
+drop table if exists administrator;
+drop table if exists feedback;
+drop table if exists advertisement;
 
 drop table if exists School;
 drop table if exists user;
@@ -19,7 +22,7 @@ create table School
     type            varchar(3)  not null,
     heat            varchar(10),
     telephone       varchar(20) not null,
-    introduction    text(1000)  not null,
+    introduction    text(10000)  not null,
     employmentRatio float(2),
     goAbroadRatio   float(2),
     enrollmentRatio float(2),
@@ -97,5 +100,29 @@ create table EnrollmentInfo
     enrollementNumber2022 int         not null,
     primary key (name, province),
     foreign key (name) references School (name)
-)
+);
 
+drop table if exists administrator;
+create table administrator(
+    adminname varchar(10) not null ,
+    `password` varchar(20) not null ,
+    primary key (adminname)
+);
+
+
+drop table if exists advertisement;
+create table advertisement(
+    title varchar(20) not null ,
+    contenttext text not null ,
+    `name` varchar(10) not null,
+    primary key (title, name) ,
+    foreign key (name) references school(name)
+);
+
+drop table if exists feedback;
+create table feedback(
+    username varchar(10) not null ,
+    feedback varchar(300) not null ,
+    primary key (username,feedback),
+    foreign key (username) references User(username)
+);
