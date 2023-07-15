@@ -5,6 +5,8 @@ import com.example.analysisandrecommendationsystem.dao.impl.UserDaoImpl;
 import com.example.analysisandrecommendationsystem.entity.User;
 import com.example.analysisandrecommendationsystem.service.UserService;
 
+import java.sql.Date;
+
 public class UserServiceImpl implements UserService {
 
     private UserDao userDao = new UserDaoImpl();
@@ -22,5 +24,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void register(String username, String password) {
         userDao.register(username, password);
+    }
+
+    @Override
+    public void modifyUserInfo(String imgurl, Date birthday, String gender, String password, String username) {
+        userDao.modifyUserInfo(imgurl,birthday,gender,password,username);
     }
 }

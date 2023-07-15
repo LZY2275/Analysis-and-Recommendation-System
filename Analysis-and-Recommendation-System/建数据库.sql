@@ -5,8 +5,9 @@ drop table if exists schhot;
 drop table if exists Geography;
 drop table if exists enrollmentinfo;
 drop table if exists hotspot;
-drop table if exists majorinfo;
 drop table if exists schmaj;
+drop table if exists majorinfo;
+
 drop table if exists School;
 drop table if exists user;
 
@@ -24,6 +25,7 @@ create table School
     enrollmentRatio float(2),
     sexRatio        float(2),
     location        varchar(10),
+    logo            varchar(255),
     primary key (`name`)
 );
 

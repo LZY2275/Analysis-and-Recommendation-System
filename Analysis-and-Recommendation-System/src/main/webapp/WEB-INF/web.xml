@@ -3,18 +3,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-<<<<<<< HEAD
+
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
-=======
-<<<<<<< HEAD
-    <welcome-file-list>
-        <welcome-file>main.jsp</welcome-file>
-=======
-    
-    <welcome-file-list>
-        <welcome-file>logintest.jsp</welcome-file>
->>>>>>> aff73217c271096f833249681a66cb783cd97bf0
->>>>>>> c41e5c9a0b8fec9a90f33f9c055fe13e8113b999
     </welcome-file-list>
+
+
+
 </web-app>

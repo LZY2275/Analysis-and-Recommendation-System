@@ -7,14 +7,38 @@ import com.example.analysisandrecommendationsystem.utils.C3P0Util;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Date;
 
 public class UserDaoImpl implements UserDao {
 
     private final static String LOGIN = "select * from user where username = ? and password = ?";
     private final static String HASSAMENAME = "select count(*) from user where username = ?";
     private final static String REGISTER = "insert into user(username, password) values (?,?)";
+    private final static String MODIFY = "UPDATE user SET password = ?, birthday = ?, userimgurl = ?, sex = ? where username = ?";
 
-//    登录函数
+
+    @Override
+    public void modifyUserInfo(String imgurl, Date birthday, String gender, String password, String username) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = C3P0Util.getConnection();
+            preparedStatement = connection.prepareStatement(MODIFY);
+            preparedStatement.setString(1,password);
+            preparedStatement.setDate(2,birthday);
+            preparedStatement.setString(3,imgurl);
+            preparedStatement.setString(4,gender);
+            preparedStatement.setString(5,username);
+            preparedStatement.execute();
+            System.out.println("修改用户信息成功");
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            C3P0Util.release(null,preparedStatement,connection);
+        }
+    }
+
+    //    登录函数
     @Override
     public User login(String name, String password) {
         Connection connection = null;
