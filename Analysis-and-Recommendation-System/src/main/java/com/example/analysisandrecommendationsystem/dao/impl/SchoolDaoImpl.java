@@ -22,6 +22,11 @@ public class SchoolDaoImpl implements SchoolDao {
     private final static String GETENROLLMENTINFO = "select * from enrollmentinfo where name = ? and province = ?";
 
     private final static String GETSCHOOLBYFORM = "select * from school natural join enrollmentinfo where (province = ?) and (type = ? or ? is null ) and ((score2022 < ?+5 and score2022 > ?-5)or ? is null )";
+
+    private final static String GETSCHOOLINFO = "select * from school where name = ?";
+
+    private final static String GETMAJORLIST = "select * from schmaj where name = ?";
+
     @Override
     public List<String> searchByName(String keyword) {
         Connection connection = null;
@@ -157,6 +162,64 @@ public class SchoolDaoImpl implements SchoolDao {
                 item.setScore2021(resultSet.getInt("score2021"));
                 item.setScore2022(resultSet.getInt("score2022"));
                 list.add(item);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            C3P0Util.release(resultSet,preparedStatement,connection);
+        }
+        return list;
+    }
+
+    @Override
+    public School getSchoolInfo(String name) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        School school = new School();
+        try {
+            connection = C3P0Util.getConnection();
+            preparedStatement = connection.prepareStatement(GETSCHOOLINFO);
+            preparedStatement.setString(1,name);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                school.setName(resultSet.getString("name"));
+                school.setRank(resultSet.getString("rank"));
+                school.setType(resultSet.getString("type"));
+                school.setHeat(resultSet.getString("heat"));
+                school.setTelephone(resultSet.getString("telephone"));
+                school.setIntroduction(resultSet.getString("introduction"));
+                school.setEmploymentRatio(resultSet.getFloat("employmentRatio"));
+                school.setGoAbroadRatio(resultSet.getFloat("goAbroadRatio"));
+                school.setEnrollmentRatio(resultSet.getFloat("enrollmentRatio"));
+                school.setSexRatio(resultSet.getFloat("sexRatio"));
+                school.setLocation(resultSet.getString("location"));
+                school.setLogo(resultSet.getString("logo"));
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            C3P0Util.release(resultSet,preparedStatement,connection);
+        }
+        return school;
+    }
+
+    @Override
+    public List<String> getSchoolMajorList(String name) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<String> list = new ArrayList<>();
+        try {
+            connection = C3P0Util.getConnection();
+            preparedStatement = connection.prepareStatement(GETMAJORLIST);
+            preparedStatement.setString(1,name);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String major = resultSet.getString("major");
+                list.add(major);
             }
 
         }catch (Exception e){
