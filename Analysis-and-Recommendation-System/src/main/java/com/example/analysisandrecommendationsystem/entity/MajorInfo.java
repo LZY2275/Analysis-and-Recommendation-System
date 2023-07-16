@@ -1,6 +1,6 @@
 package com.example.analysisandrecommendationsystem.entity;
 
-public class Major {
+public class MajorInfo {
     private String major;
 
     public String getMajor() {

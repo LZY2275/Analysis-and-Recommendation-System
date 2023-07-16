@@ -15,6 +15,7 @@
 <form action="/login" method="post">
     用户名：<input type="text" name="name"><br>
     密码：<input type="password" name="password"><br>
+    管理员登陆:<input type="checkbox" name="role" value="admin"> 管理员
     <button type="submit">登录</button>
     <button><a href="registertest.jsp">去注册</a></button>
 </form>

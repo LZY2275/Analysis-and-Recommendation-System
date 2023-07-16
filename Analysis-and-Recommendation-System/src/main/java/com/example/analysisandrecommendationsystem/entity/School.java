@@ -7,13 +7,29 @@ public class School {
     private String heat;
     private String telephone;
     private String introduction;
-    private int score2020;
-    private int score2021;
-    private int score2022;
     private float employmentRatio;
     private float goAbroadRatio;
     private float enrollmentRatio;
     private float sexRatio;
+    private String location;
+    private String logo;
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
 
     public String getName() {
         return name;
@@ -63,29 +79,6 @@ public class School {
         this.introduction = introduction;
     }
 
-    public int getScore2020() {
-        return score2020;
-    }
-
-    public void setScore2020(int score2020) {
-        this.score2020 = score2020;
-    }
-
-    public int getScore2021() {
-        return score2021;
-    }
-
-    public void setScore2021(int score2021) {
-        this.score2021 = score2021;
-    }
-
-    public int getScore2022() {
-        return score2022;
-    }
-
-    public void setScore2022(int score2022) {
-        this.score2022 = score2022;
-    }
 
     public float getEmploymentRatio() {
         return employmentRatio;
