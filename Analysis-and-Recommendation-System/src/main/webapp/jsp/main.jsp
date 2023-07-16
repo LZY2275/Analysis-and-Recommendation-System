@@ -1,25 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
   User: DELL
-  Date: 2023/7/14
-  Time: 15:18
+  Date: 2023/7/15
+  Time: 9:50
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>智慧高校大数据</title>
-    <link href="../css/main.css" type="text/css" rel="stylesheet" />
+    <title>首页</title>
 </head>
 <body>
-<div class="nav">
-    <ul class="ul_top">
-        <li><p class="top_text1">智慧高校大数据</p></li>
-        <li><p class="top_text2">高校分析推荐系统</p></li>
-    </ul>
-</div>
-
-
+<div style="color: #FFFFFF">你好</div>
 </body>
 </html>

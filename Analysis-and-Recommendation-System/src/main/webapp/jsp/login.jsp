@@ -31,7 +31,7 @@
 
         <div class="form-group" style="padding: 0 10px; background-color: rgba(255, 255, 255, 0.5);">
             <img src="../images/用户.svg" style="width: 15px; height: 15px;">
-            <input type="text" id="username" name="username" required placeholder="用户名">
+            <input type="text" id="username" name="name" required placeholder="用户名">
         </div>
 
         <div class="form-group" style="padding: 0 10px; background-color: rgba(255, 255, 255, 0.5);">

@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
                 request.getSession().setAttribute("admin",administrator);
                 System.out.println("管理员登录成功");
             }else {
-                request.getRequestDispatcher("/logintest.jsp").forward(request,response);
+                request.getRequestDispatcher("/jsp/login.jsp").forward(request,response);
             }
         }
         else {
@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 //            System.out.println("登陆成功");
 //            System.out.println(user.getBirthday());
             } else {
-                request.getRequestDispatcher("/logintest.jsp").forward(request,response);
+                request.getRequestDispatcher("/jsp/login.jsp").forward(request,response);
             }
         }
     }
