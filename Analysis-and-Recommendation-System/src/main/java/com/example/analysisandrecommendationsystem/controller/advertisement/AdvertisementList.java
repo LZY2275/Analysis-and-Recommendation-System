@@ -21,7 +21,7 @@ public class AdvertisementList extends HttpServlet {
         List<Advertisement> list = advertiseService.list();
         if(!list.isEmpty()){
             request.setAttribute("advertisementList",list);
-            request.getRequestDispatcher("/testindex.jsp").forward(request,response);
         }
+        request.getRequestDispatcher("/jsp/index.jsp").forward(request,response);
     }
 }
