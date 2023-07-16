@@ -5,6 +5,7 @@
   Time: 9:50
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,9 +14,9 @@
 </head>
 <body>
 <!-- 导航栏主体 -->
-<div class="left-menu" style="opacity: 0.6">
+<div class="left-menu">
     <!-- 顶部标题 -->
-    <div>导航栏</div>
+<!--    <div>导航栏</div>-->
     <!-- 链接 -->
     <a href="main.jsp" target="mainFrame">
         <div class="menu-no-child menu-item">
@@ -26,7 +27,7 @@
 
     <div class="menu-item-hasChild menu-item">
         <img class="image" src="https://i.postimg.cc/CK0PTszx/edu.png" width="15px" height="15px">
-        <p>选择大学</p>
+        选择大学
         <span class="icon">></span>
     </div>
     <div class="menu-first-items">
@@ -34,6 +35,7 @@
             <li>
                 <div class="li-text li-underline">985大学</div>
             </li>
+
             <li>
                 <div class="li-text li-underline">211大学</div>
             </li>
@@ -60,16 +62,7 @@
             个人信息
         </div>
     </a>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="logout">
+    <div class="logout" style="position: fixed;bottom: 20px">
         登出
     </div>
 </div>

@@ -4,7 +4,6 @@
 * {
     box-sizing: border-box;
     overflow: hidden;
-    color: #FFFFFF;
 }
 
 a:link {
@@ -26,12 +25,12 @@ a:active {
     left: 0;
     width: 175px;
     height: 100%;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(170,170,170,0.2);
 
     text-align: center;
     font-size: 15px;
     transition: left 0.2s linear 0.1s;
-    color: #FFFFFF;
+    color: rgba(255,255,255,0.3);
 }
 
 /** 导航栏 */
@@ -47,19 +46,17 @@ a:active {
     padding: 10px;
     width: 100%;
     font-weight: 700;
-    border-top: 0.1px solid rgb(201, 195, 195);
-    border-bottom: 0.1px solid rgb(201, 195, 195);
-    color: #FFFFFF;
 }
 
 .menu-item:hover {
     cursor: pointer;
-    background-color: rgb(224, 224, 224);
+    color: rgb(255,255,255);
+    /*background-color: rgba(224, 224, 224,0.2);*/
 }
 
 .menu-no-child{
     text-align: left;
-    color: #FFFFFF;
+    color: rgba(255,255,255,0.3);
 }
 
 /** 可打开的菜单 */
@@ -120,7 +117,7 @@ li {
 }
 
 .li-text:hover {
-    background-color: rgb(224, 224, 224);
+    background-color: rgba(224, 224, 224, 0.05);
     cursor: pointer;
     border-radius: 0.5rem;
 }
