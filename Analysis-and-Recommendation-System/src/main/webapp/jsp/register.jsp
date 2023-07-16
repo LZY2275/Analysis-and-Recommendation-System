@@ -9,10 +9,10 @@
 <html>
 <head>
     <title>注册界面</title>
-    <link rel="stylesheet" href="authentication.css">
+    <link rel="stylesheet" href="../css/authentication.css">
     <style>
         body {
-            background-image: url('./images/数据大屏背景/bg.jpg');
+            background-image: url('../images/数据大屏背景/bg.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             height: 100vh;
@@ -37,22 +37,22 @@
 <body>
 <div class="container">
     <div class="animation-container">
-        <img src="./images/图片 MO8v82f.svg" class="animated-image" style="width: 80px; height: 80px;">
+        <img src="../images/图片%20MO8v82f.svg" class="animated-image" style="width: 80px; height: 80px;">
     </div>
     <form action="/login" method="post" onsubmit="return validateForm();">
 
         <div class="form-group" style="padding: 0 10px; background-color: rgba(255, 255, 255, 0.5);">
-            <img src="./images/用户.svg" style="width: 15px; height: 15px;">
+            <img src="../images/用户.svg" style="width: 15px; height: 15px;">
             <input type="text" id="username" name="username" required placeholder="用户名">
         </div>
 
         <div class="form-group" style="padding: 0 10px; background-color: rgba(255, 255, 255, 0.5);">
-            <img src="./images/密码.svg" style="width: 15px; height: 15px;">
+            <img src="../images/密码.svg" style="width: 15px; height: 15px;">
             <input type="password" id="password" name="password" required placeholder="密码">
         </div>
 
         <div class="form-group" style="padding: 0 10px; background-color: rgba(255, 255, 255, 0.5);">
-            <img src="./images/密码.svg" style="width: 15px; height: 15px;">
+            <img src="../images/密码.svg" style="width: 15px; height: 15px;">
             <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="确认密码">
         </div>
 

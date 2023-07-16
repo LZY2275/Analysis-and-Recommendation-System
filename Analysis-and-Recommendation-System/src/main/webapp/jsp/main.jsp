@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <title>智慧高校大数据</title>
-    <link href="main.css" type="text/css" rel="stylesheet" />
+    <link href="../css/main.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 <div class="nav">
