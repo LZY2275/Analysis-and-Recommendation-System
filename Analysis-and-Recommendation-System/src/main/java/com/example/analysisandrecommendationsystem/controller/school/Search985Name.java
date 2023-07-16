@@ -18,9 +18,10 @@ public class Search985Name extends HttpServlet {
         SchoolService service = new SchoolServiceImpl();
         List<String> list = service.search985();
         if (!list.isEmpty()){
-            request.setAttribute("list985",list);
+            request.getSession().setAttribute("list985",list);
 //            dispatcher到当前页面
-            request.getRequestDispatcher("/testsearchbyschoolname.jsp").forward(request,response);
+            System.out.println(list);
+            response.sendRedirect("/search211");
         }
     }
 }

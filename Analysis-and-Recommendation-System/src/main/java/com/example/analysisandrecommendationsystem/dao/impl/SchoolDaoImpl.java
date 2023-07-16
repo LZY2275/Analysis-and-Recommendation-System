@@ -21,7 +21,7 @@ public class SchoolDaoImpl implements SchoolDao {
 
     private final static String GETENROLLMENTINFO = "select * from enrollmentinfo where name = ? and province = ?";
 
-    private final static String GETSCHOOLBYFORM = "select * from school natural join enrollmentinfo natural join geography where (province = ?) and (type = ? or ? is null ) and ((score2022 < ?+5 and score2022 > ?-5)or ? is null )";
+    private final static String GETSCHOOLBYFORM = "select * from school natural join enrollmentinfo where (province = ?) and (type = ? or ? is null ) and ((score2022 < ?+5 and score2022 > ?-5)or ? is null )";
     @Override
     public List<String> searchByName(String keyword) {
         Connection connection = null;

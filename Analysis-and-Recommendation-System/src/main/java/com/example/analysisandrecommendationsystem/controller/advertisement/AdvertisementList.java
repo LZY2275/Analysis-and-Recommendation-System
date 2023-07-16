@@ -20,7 +20,7 @@ public class AdvertisementList extends HttpServlet {
         AdvertiseService advertiseService = new AdvertiseServiceImpl();
         List<Advertisement> list = advertiseService.list();
         if(!list.isEmpty()){
-            request.setAttribute("advertisementList",list);
+            request.getSession().setAttribute("advertisementList",list);
         }
         request.getRequestDispatcher("/jsp/index.jsp").forward(request,response);
     }

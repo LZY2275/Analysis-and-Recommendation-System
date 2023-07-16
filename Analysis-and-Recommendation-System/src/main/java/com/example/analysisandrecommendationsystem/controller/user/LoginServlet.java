@@ -39,7 +39,9 @@ public class LoginServlet extends HttpServlet {
             User user = userService.login(name, password);
             if (user.getUsername() != null && !user.getUsername().equals("") && user.getPassword() != null && !user.getPassword().equals("")) {
                 request.getSession().setAttribute("user", user);
-                request.getRequestDispatcher("/adlist").forward(request,response);
+                response.sendRedirect("/search985");
+//                response.sendRedirect("/search211");
+//                request.getRequestDispatcher("/adlist").forward(request,response);
 //            调用其他的方法
 //            request.getRequestDispatcher("/list").forward(request, response);
 //            System.out.println("登陆成功");

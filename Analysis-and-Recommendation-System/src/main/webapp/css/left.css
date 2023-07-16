@@ -138,3 +138,8 @@ li {
     width: 15px;
     height: 15px;
 }
+
+/* 将滚动条滑块透明 */
+::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}

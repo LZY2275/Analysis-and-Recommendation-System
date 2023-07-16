@@ -18,9 +18,9 @@ public class Search211Name extends HttpServlet {
         SchoolService service = new SchoolServiceImpl();
         List<String> list = service.search211();
         if (!list.isEmpty()){
-            request.setAttribute("list211",list);
-//            dispatcher到当前页面
-            request.getRequestDispatcher("/testsearchbyschoolname.jsp").forward(request,response);
+            request.getSession().setAttribute("list211",list);
+            response.sendRedirect("/adlist");
         }
+        System.out.println(list);
     }
 }
