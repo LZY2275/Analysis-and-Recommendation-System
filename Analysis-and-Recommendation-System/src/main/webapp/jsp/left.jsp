@@ -98,7 +98,7 @@
 
     <!--管理员登录显示的左侧导航栏-->
     <c:if test="${isadmin}">
-        <a href="#" target="mainFrame">
+        <a href="/jsp/usermanage.jsp" target="mainFrame">
             <div class="menu-no-child menu-item">
                 <img class="image" src="https://i.postimg.cc/VNF7Y0CB/photo.png" width="15px" height="15px">
                 用户管理
@@ -120,14 +120,13 @@
 
                 <li>
                     <a href="#" target="mainFrame">
-
                         <div class="li-text li-underline">已处理</div>
                     </a>
                 </li>
             </ul>
         </div>
 
-        <a href="#" target="mainFrame">
+        <a href="/jsp/datamanage.jsp" target="mainFrame">
             <div class="menu-no-child menu-item">
                 <img class="image" src="https://i.postimg.cc/bwffzDFt/image.png" width="15px" height="15px">
                 数据管理
