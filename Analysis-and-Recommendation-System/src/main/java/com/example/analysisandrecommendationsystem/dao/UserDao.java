@@ -13,4 +13,6 @@ public interface UserDao {
     boolean hasSameUsername(String username);
 
     void register(String username, String password);
+
+    String getPassword(String name, Date birthday, String sex);
 }

@@ -36,10 +36,18 @@
 </head>
 <body>
 <div class="container">
+    <% String errorMessage = (String) request.getAttribute("errorMessage"); %>
+    <% if (errorMessage != null) { %>
+    <div class="error-message" style="color:white;font-size: xx-small;display: flex;justify-content: center;">
+        <span>
+            <%= errorMessage %>
+        </span>
+    </div>
+    <% } %>
     <div class="animation-container">
         <img src="../images/图片%20MO8v82f.svg" class="animated-image" style="width: 80px; height: 80px;">
     </div>
-    <form action="/login" method="post" onsubmit="return validateForm();">
+    <form action="/register" method="post" onsubmit="return validateForm();">
 
         <div class="form-group" style="padding: 0 10px; background-color: rgba(255, 255, 255, 0.5);">
             <img src="../images/用户.svg" style="width: 15px; height: 15px;">

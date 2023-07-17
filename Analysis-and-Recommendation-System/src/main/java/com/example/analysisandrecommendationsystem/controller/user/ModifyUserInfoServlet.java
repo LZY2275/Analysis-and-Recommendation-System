@@ -3,6 +3,7 @@ package com.example.analysisandrecommendationsystem.controller.user;
 import com.example.analysisandrecommendationsystem.entity.User;
 import com.example.analysisandrecommendationsystem.service.UserService;
 import com.example.analysisandrecommendationsystem.service.impl.UserServiceImpl;
+import com.example.analysisandrecommendationsystem.utils.Utils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -46,8 +47,9 @@ public class ModifyUserInfoServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         Date birthday = null;
+        Utils utils = new Utils();
         try {
-            birthday = stringtoDate(birthdayString);
+            birthday = utils.stringtoDate(birthdayString);
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
@@ -69,12 +71,4 @@ public class ModifyUserInfoServlet extends HttpServlet {
 //       request.getRequestDispatcher("/list").forward(request,response);
     }
 
-//    将util转换成sql.date
-    private Date stringtoDate(String dateString) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        java.util.Date date = sdf.parse(dateString);
-        // 将 java.util.Date 转换为 java.sql.Date
-        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-        return sqlDate;
-    }
 }

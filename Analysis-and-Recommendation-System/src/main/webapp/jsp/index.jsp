@@ -18,6 +18,9 @@
 <div style="float: left; width: calc(100% - 175px)" id="mainframe">
   <iframe name="mainFrame" src="/jsp/main.jsp" onresize borders="NO" width=100% height="100%"></iframe>
 </div>
+  <div class="logout" style="position: fixed;bottom: 20px;left: 20px">
+    <a href="/logout" style="text-decoration: none;color: white" target="">登出</a>
+  </div>
 </div>
 
 

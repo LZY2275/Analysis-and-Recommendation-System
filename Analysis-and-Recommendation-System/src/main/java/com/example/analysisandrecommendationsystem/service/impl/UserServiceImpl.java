@@ -30,4 +30,9 @@ public class UserServiceImpl implements UserService {
     public void modifyUserInfo(String imgurl, Date birthday, String gender, String password, String username) {
         userDao.modifyUserInfo(imgurl,birthday,gender,password,username);
     }
+
+    @Override
+    public String getPassword(String name, Date birthday, String sex) {
+        return userDao.getPassword(name,birthday,sex);
+    }
 }

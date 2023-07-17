@@ -135,9 +135,7 @@
 
     </c:if>
 
-    <div class="logout" style="position: fixed;bottom: 20px">
-        登出
-    </div>
+
 </div>
 
 <script>

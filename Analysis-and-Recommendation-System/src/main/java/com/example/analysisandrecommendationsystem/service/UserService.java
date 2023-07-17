@@ -18,4 +18,5 @@ public interface UserService {
     void modifyUserInfo(String imgurl, Date birthday, String gender, String password,String username);
 
 
+    String getPassword(String name, Date birthday, String sex);
 }

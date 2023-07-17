@@ -25,11 +25,20 @@
 <body>
 <div class="container">
 
+    <% String password = (String) request.getAttribute("password"); %>
+    <% if (password != null) { %>
+    <div style="color:white;font-size: xx-small;display: flex;justify-content: center;">
+        <span>
+            你的密码为：<%= password %>
+        </span>
+    </div>
+    <% } %>
+
     <div class="animation-container">
         <img src="../images/图片%20MO8v82f.svg" class="animated-image">
     </div>
 
-    <form action="/login" method="post">
+    <form action="/getpassword" method="post">
 
         <div class="form-group" style="padding: 0 10px; background-color: rgba(255, 255, 255, 0.5);">
             <img src="../images/用户.svg" style="width: 15px; height: 15px;">
@@ -54,6 +63,9 @@
             <input type="submit" value="找回密码" class="btn">
         </div>
     </form>
+    <div class="form-group" style="margin-top: 8px;">
+        <input type="submit" value="返回登录" class="btn" style="background-color: #45a049">
+    </div>
 </div>
 
 <!-- 引入jQuery和jQuery UI库 -->
