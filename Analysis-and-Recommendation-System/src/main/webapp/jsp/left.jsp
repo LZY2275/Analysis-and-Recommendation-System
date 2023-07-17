@@ -25,73 +25,117 @@
         </div>
     </a>
 
-    <div class="menu-item-hasChild menu-item">
-        <img class="image" src="https://i.postimg.cc/CK0PTszx/edu.png" width="15px" height="15px">
-        选择大学
-        <span class="icon">></span>
-    </div>
-    <div class="menu-first-items" id="parentDiv" style="overflow-y: scroll">
-        <ul>
-            <li>
-                <label>
-                    关键字:
-                    <input type="search" name="keyword" id="keyword">
-                </label>
-                <br>
-                <button onclick="searchByName()">搜索</button>
-                <div id="searchResultContainer"></div>
+    <!--用户登录显示的左侧导航栏-->
+    <c:if test="${!isadmin}">
+        <div class="menu-item-hasChild menu-item">
+            <img class="image" src="https://i.postimg.cc/CK0PTszx/edu.png" width="15px" height="15px">
+            选择大学
+            <span class="icon">></span>
+        </div>
+        <div class="menu-first-items" id="parentDiv">
+            <ul>
+                <li>
+                    <label>
+                        关键字:
+                        <input type="search" name="keyword" id="keyword">
+                    </label>
+                    <br>
+                    <button onclick="searchByName()">搜索</button>
+                    <div id="searchResultContainer"></div>
 
-            </li>
-            <li>
-                <div class="li-text li-underline" onclick="display985()">985大学</div>
-            </li>
+                </li>
+                <li>
+                    <div class="li-text li-underline" onclick="display985()">985大学</div>
+                </li>
 
 
-            <!--此处显示985大学列表-->
-            <div style="display: none" id="list985">
-                <c:forEach items="${list985}" var="item985">
-                    <div id="${item985}">
-                            ${item985}
-                    </div>
-                </c:forEach>
+                <!--此处显示985大学列表-->
+                <div style="display: none" id="list985">
+                    <c:forEach items="${list985}" var="item985">
+                        <div id="${item985}" >
+                            <a href="#">${item985}</a>
+                        </div>
+                    </c:forEach>
+                </div>
+
+                <li>
+                    <div class="li-text li-underline" onclick="display211()">211大学</div>
+                </li>
+                <!--此处显示211大学列表-->
+                <div style="display: none" id="list211">
+                    <c:forEach items="${list211}" var="item211">
+                        <a id="${item211}" href="#">
+                            <a href="#">${item211}</a>
+                        </a>
+
+                    </c:forEach>
+                </div>
+
+            </ul>
+        </div>
+
+        <a href="location.jsp" target="mainFrame">
+            <div class="menu-no-child menu-item">
+                <img class="image" src="https://i.postimg.cc/QtxfVNgL/location.png" width="15px" height="15px">
+                地理位置
             </div>
+        </a>
 
-            <li>
-                <div class="li-text li-underline" onclick="display211()">211大学</div>
-            </li>
-            <!--此处显示211大学列表-->
-            <div style="display: none" id="list211">
-                <c:forEach items="${list211}" var="item211">
-                    <div id="${item211}">
-                            ${item211}
-                    </div>
-
-                </c:forEach>
+        <a href="education.jsp" target="mainFrame">
+            <div class="menu-no-child menu-item">
+                <img class="image" src="https://i.postimg.cc/SQ1v29tg/alarm.png" width="15px" height="15px">
+                志愿填报
             </div>
+        </a>
 
-        </ul>
-    </div>
+        <a href="my.jsp" target="mainFrame">
+            <div class="menu-no-child menu-item">
+                <img class="image" src="https://i.postimg.cc/VNF7Y0CB/photo.png" width="15px" height="15px">
+                个人信息
+            </div>
+        </a>
+    </c:if>
 
-    <a href="location.jsp" target="mainFrame">
-        <div class="menu-no-child menu-item">
-            <img class="image" src="https://i.postimg.cc/QtxfVNgL/location.png" width="15px" height="15px">
-            地理位置
+    <!--管理员登录显示的左侧导航栏-->
+    <c:if test="${isadmin}">
+        <a href="#" target="mainFrame">
+            <div class="menu-no-child menu-item">
+                <img class="image" src="https://i.postimg.cc/VNF7Y0CB/photo.png" width="15px" height="15px">
+                用户管理
+            </div>
+        </a>
+        <div class="menu-item-hasChild menu-item" >
+            <img class="image" src="../images/反馈.svg" width="15px" height="15px">
+            用户反馈
+            <span class="icon">></span>
         </div>
-    </a>
+        <div class="menu-first-items" id="feedback">
+            <ul>
+                <li>
+                    <a href="#" target="mainFrame">
 
-    <a href="education.jsp" target="mainFrame">
-        <div class="menu-no-child menu-item">
-            <img class="image" src="https://i.postimg.cc/SQ1v29tg/alarm.png" width="15px" height="15px">
-            志愿填报
-        </div>
-    </a>
+                        <div class="li-text li-underline">未处理</div>
+                    </a>
+                </li>
 
-    <a href="my.jsp" target="mainFrame">
-        <div class="menu-no-child menu-item">
-            <img class="image" src="https://i.postimg.cc/VNF7Y0CB/photo.png" width="15px" height="15px">
-            个人信息
+                <li>
+                    <a href="#" target="mainFrame">
+
+                        <div class="li-text li-underline">已处理</div>
+                    </a>
+                </li>
+            </ul>
         </div>
-    </a>
+
+        <a href="#" target="mainFrame">
+            <div class="menu-no-child menu-item">
+                <img class="image" src="https://i.postimg.cc/bwffzDFt/image.png" width="15px" height="15px">
+                数据管理
+            </div>
+        </a>
+
+    </c:if>
+
     <div class="logout" style="position: fixed;bottom: 20px">
         登出
     </div>
@@ -177,12 +221,12 @@
     }
 
     // 导航栏的显现与隐藏
-    let OC = document.getElementsByClassName("open-close")[0];
-    let menu = document.getElementsByClassName("left-menu")[0];
-    OC.onclick = function () {
-        OC.classList.toggle("reverse-condition");
-        menu.classList.toggle("hide-menu");
-    };
+    // let OC = document.getElementsByClassName("open-close")[0];
+    // let menu = document.getElementsByClassName("left-menu")[0];
+    // OC.onclick = function () {
+    //     OC.classList.toggle("reverse-condition");
+    //     menu.classList.toggle("hide-menu");
+    // };
 
     function searchByName(){
         var keyworddom = document.getElementById("keyword");
@@ -208,11 +252,12 @@
             container.innerHTML = "";
             for (var i = 0; i < searchresult.length; i++) {
                 var item = searchresult[i];
+                var a = document.createElement("a");
                 var div = document.createElement("div");
-                div.textContent = item;
+                a.textContent = item;
                 //div的name属性为大学的名字
-                div.setAttribute('id',item)
-                div.setAttribute('onclick',Search)
+                a.setAttribute("href","#")
+                div.appendChild(a);
                 container.appendChild(div);
             }
             calcParentDivHeight("parentDiv");
@@ -237,6 +282,8 @@
         parentDiv.style.height = totalHeight + "px";
     }
 
+    //只有登录的为用户，才会使用一下的代码
+    <c:if test="${!isadmin}">
     function display985(){
 
         showlist985=!showlist985;
@@ -270,6 +317,8 @@
         }
         calcParentDivHeight("parentDiv");
     }
+
+    </c:if>
 
 </script>
 
