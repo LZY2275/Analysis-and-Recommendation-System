@@ -10,18 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet("/adlist")
-public class AdvertisementList extends HttpServlet {
+@WebServlet("/getadinfo")
+public class GetAdInfoServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        获取所有大学的广告内容
+        String title = request.getParameter("title");
+        System.out.println(title);
         AdvertiseService advertiseService = new AdvertiseServiceImpl();
-        List<Advertisement> list = advertiseService.list();
-        if(!list.isEmpty()){
-            request.getSession().setAttribute("advertisementList",list);
+        Advertisement advertisement = advertiseService.getAdInfo(title);
+//        System.out.println(advertisement);
+        if(advertisement.getTitle()!=null && !advertisement.getTitle().equals("")){
+//            System.out.println("you");
+            request.getSession().setAttribute("advertisement",advertisement);
+            response.sendRedirect("/jsp/editad.jsp");
         }
-        request.getRequestDispatcher("/jsp/index.jsp").forward(request,response);
     }
 }

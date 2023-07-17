@@ -25,46 +25,117 @@
         </div>
     </a>
 
-    <div class="menu-item-hasChild menu-item">
-        <img class="image" src="https://i.postimg.cc/CK0PTszx/edu.png" width="15px" height="15px">
-        选择大学
-        <span class="icon">></span>
-    </div>
-    <div class="menu-first-items">
-        <ul>
-            <li>
-                <div class="li-text li-underline">985大学</div>
-            </li>
-
-            <li>
-                <div class="li-text li-underline">211大学</div>
-            </li>
-        </ul>
-    </div>
-
-    <a href="location.jsp" target="mainFrame">
-        <div class="menu-no-child menu-item">
-            <img class="image" src="https://i.postimg.cc/QtxfVNgL/location.png" width="15px" height="15px">
-            地理位置
+    <!--用户登录显示的左侧导航栏-->
+    <c:if test="${!isadmin}">
+        <div class="menu-item-hasChild menu-item">
+            <img class="image" src="https://i.postimg.cc/CK0PTszx/edu.png" width="15px" height="15px">
+            选择大学
+            <span class="icon">></span>
         </div>
-    </a>
+        <div class="menu-first-items" id="parentDiv">
+            <ul>
+                <li>
+                    <label>
+                        关键字:
+                        <input type="search" name="keyword" id="keyword">
+                    </label>
+                    <br>
+                    <button onclick="searchByName()">搜索</button>
+                    <div id="searchResultContainer"></div>
 
-    <a href="education.jsp" target="mainFrame">
-        <div class="menu-no-child menu-item">
-            <img class="image" src="https://i.postimg.cc/SQ1v29tg/alarm.png" width="15px" height="15px">
-            志愿填报
-        </div>
-    </a>
+                </li>
+                <li>
+                    <div class="li-text li-underline" onclick="display985()">985大学</div>
+                </li>
 
-    <a href="my.jsp" target="mainFrame">
-        <div class="menu-no-child menu-item">
-            <img class="image" src="https://i.postimg.cc/VNF7Y0CB/photo.png" width="15px" height="15px">
-            个人信息
+
+                <!--此处显示985大学列表-->
+                <div style="display: none" id="list985">
+                    <c:forEach items="${list985}" var="item985">
+                        <div id="${item985}" >
+                            <a href="#">${item985}</a>
+                        </div>
+                    </c:forEach>
+                </div>
+
+                <li>
+                    <div class="li-text li-underline" onclick="display211()">211大学</div>
+                </li>
+                <!--此处显示211大学列表-->
+                <div style="display: none" id="list211">
+                    <c:forEach items="${list211}" var="item211">
+                        <a id="${item211}" href="#">
+                            <a href="#">${item211}</a>
+                        </a>
+
+                    </c:forEach>
+                </div>
+
+            </ul>
         </div>
-    </a>
-    <div class="logout" style="position: fixed;bottom: 20px">
-        登出
-    </div>
+
+        <a href="location.jsp" target="mainFrame">
+            <div class="menu-no-child menu-item">
+                <img class="image" src="https://i.postimg.cc/QtxfVNgL/location.png" width="15px" height="15px">
+                地理位置
+            </div>
+        </a>
+
+        <a href="education.jsp" target="mainFrame">
+            <div class="menu-no-child menu-item">
+                <img class="image" src="https://i.postimg.cc/SQ1v29tg/alarm.png" width="15px" height="15px">
+                志愿填报
+            </div>
+        </a>
+
+        <a href="my.jsp" target="mainFrame">
+            <div class="menu-no-child menu-item">
+                <img class="image" src="https://i.postimg.cc/VNF7Y0CB/photo.png" width="15px" height="15px">
+                个人信息
+            </div>
+        </a>
+    </c:if>
+
+    <!--管理员登录显示的左侧导航栏-->
+    <c:if test="${isadmin}">
+        <a href="/jsp/usermanage.jsp" target="mainFrame">
+            <div class="menu-no-child menu-item">
+                <img class="image" src="https://i.postimg.cc/VNF7Y0CB/photo.png" width="15px" height="15px">
+                用户管理
+            </div>
+        </a>
+        <div class="menu-item-hasChild menu-item" >
+            <img class="image" src="../images/反馈.svg" width="15px" height="15px">
+            用户反馈
+            <span class="icon">></span>
+        </div>
+        <div class="menu-first-items" id="feedback">
+            <ul>
+                <li>
+                    <a href="#" target="mainFrame">
+
+                        <div class="li-text li-underline">未处理</div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" target="mainFrame">
+                        <div class="li-text li-underline">已处理</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <a href="/jsp/datamanage.jsp" target="mainFrame">
+            <div class="menu-no-child menu-item">
+                <img class="image" src="https://i.postimg.cc/bwffzDFt/image.png" width="15px" height="15px">
+                数据管理
+            </div>
+        </a>
+
+    </c:if>
+
+
 </div>
 
 <script>
@@ -72,6 +143,10 @@
     let items = document.getElementsByClassName("menu-first-items");
     let noChildItem = document.getElementsByClassName('menu-no-child');
     let icons = document.getElementsByClassName("icon");
+    var showlist985 = false;
+    var showlist211 = false;
+
+    var searchresult=[];
 
     /** 记录当前打开的一级菜单是哪个 没有打开任何菜单的状态 默认为-1 */
     let currentDisplayIndex = -1;
@@ -143,12 +218,105 @@
     }
 
     // 导航栏的显现与隐藏
-    let OC = document.getElementsByClassName("open-close")[0];
-    let menu = document.getElementsByClassName("left-menu")[0];
-    OC.onclick = function () {
-        OC.classList.toggle("reverse-condition");
-        menu.classList.toggle("hide-menu");
-    };
+    // let OC = document.getElementsByClassName("open-close")[0];
+    // let menu = document.getElementsByClassName("left-menu")[0];
+    // OC.onclick = function () {
+    //     OC.classList.toggle("reverse-condition");
+    //     menu.classList.toggle("hide-menu");
+    // };
+
+    function searchByName(){
+        var keyworddom = document.getElementById("keyword");
+        var keyword = keyworddom.value;
+        if(keyword==null||keyword==""){
+            var container = document.getElementById("searchResultContainer");
+            // 清空searchResultContainer的子标签
+            container.innerHTML = "";
+            calcParentDivHeight("parentDiv");
+            return;
+        }
+        //一定要这样加才可以
+        var url = '/searchBySchoolName?keyword=' + encodeURIComponent(keyword);
+
+        fetch(url).then(function response(response){
+            return response.text();
+        }).then(function (data){
+            // console.log(data);
+            searchresult=JSON.parse(data)
+            //显示搜索结果
+            var container = document.getElementById("searchResultContainer");
+            // 清空searchResultContainer的子标签
+            container.innerHTML = "";
+            for (var i = 0; i < searchresult.length; i++) {
+                var item = searchresult[i];
+                var a = document.createElement("a");
+                var div = document.createElement("div");
+                a.textContent = item;
+                //div的name属性为大学的名字
+                a.setAttribute("href","#")
+                div.appendChild(a);
+                container.appendChild(div);
+            }
+            calcParentDivHeight("parentDiv");
+        })
+    }
+
+    //获取总高度
+    function calcParentDivHeight(id) {
+        var parentDiv = document.getElementById(id);
+        var totalHeight = 0;
+
+        // 计算父级<div>的总高度
+        for (var i = 0; i < parentDiv.children.length; i++) {
+            totalHeight += parentDiv.children[i].offsetHeight;
+        }
+
+        // 设置父级<div>的高度
+        // console.log(totalHeight);
+        if (totalHeight>=450){
+            totalHeight=450;
+        }
+        parentDiv.style.height = totalHeight + "px";
+    }
+
+    //只有登录的为用户，才会使用一下的代码
+    <c:if test="${!isadmin}">
+    function display985(){
+
+        showlist985=!showlist985;
+        showlist211=false;
+        var dom985 = document.getElementById("list985");
+        var dom211 = document.getElementById("list211");
+        if(showlist985){
+            dom985.style.display = "block";
+            dom211.style.display = "none";
+        }else {
+            dom985.style.display = "none";
+            dom211.style.display = "none";
+
+        }
+        calcParentDivHeight("parentDiv");
+
+    }
+
+    function display211(){
+
+        showlist211=!showlist211;
+        showlist985=false;
+        var dom985 = document.getElementById("list985");
+        var dom211 = document.getElementById("list211");
+        if(showlist211){
+            dom211.style.display = "block";
+            dom985.style.display = "none";
+        }else {
+            dom985.style.display = "none";
+            dom211.style.display = "none";
+        }
+        calcParentDivHeight("parentDiv");
+    }
+
+    </c:if>
+
 </script>
 
 </body>

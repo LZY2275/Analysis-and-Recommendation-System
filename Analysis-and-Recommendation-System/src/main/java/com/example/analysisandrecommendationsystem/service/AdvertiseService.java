@@ -7,4 +7,10 @@ import java.util.List;
 public interface AdvertiseService {
 
     List<Advertisement> list();
+
+    Advertisement getAdInfo(String title);
+
+    void updateAdInfo(String title, String content, String name);
+
+    void deleteAdInfo(String title, String name);
 }

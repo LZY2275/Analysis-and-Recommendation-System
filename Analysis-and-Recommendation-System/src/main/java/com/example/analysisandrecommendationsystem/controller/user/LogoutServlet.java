@@ -17,9 +17,10 @@ public class LogoutServlet extends HttpServlet {
         HttpSession httpSession = request.getSession();
 //        由于之前登陆的时候设置的名称为user，故移除user
         httpSession.removeAttribute("user");
+        httpSession.removeAttribute("admin");
         httpSession.invalidate();
 //        重定向到登陆页面
-        response.sendRedirect("/logintest.jsp");
+        response.sendRedirect("/jsp/login.jsp");
 
     }
 }

@@ -15,6 +15,7 @@ public class UserDaoImpl implements UserDao {
     private final static String HASSAMENAME = "select count(*) from user where username = ?";
     private final static String REGISTER = "insert into user(username, password) values (?,?)";
     private final static String MODIFY = "UPDATE user SET password = ?, birthday = ?, userimgurl = ?, sex = ? where username = ?";
+    private final static String GETPASSWORD = "select password from user where username = ? and birthday = ? and sex = ?";
 
 
     @Override
@@ -109,6 +110,30 @@ public class UserDaoImpl implements UserDao {
         } finally {
             C3P0Util.release(null, preparedStatement, connection);
         }
+    }
+
+    @Override
+    public String getPassword(String name, Date birthday, String sex) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String password = null;
+        try {
+            connection = C3P0Util.getConnection();
+            preparedStatement = connection.prepareStatement(GETPASSWORD);
+            preparedStatement.setString(1,name);
+            preparedStatement.setDate(2,birthday);
+            preparedStatement.setString(3,sex);
+            resultSet=preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                password = resultSet.getString("password");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            C3P0Util.release(resultSet,preparedStatement,connection);
+        }
+        return password;
     }
 
 //    登出函数

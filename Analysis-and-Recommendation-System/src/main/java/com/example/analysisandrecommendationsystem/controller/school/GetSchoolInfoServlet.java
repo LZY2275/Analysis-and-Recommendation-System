@@ -1,5 +1,6 @@
 package com.example.analysisandrecommendationsystem.controller.school;
 
+import com.example.analysisandrecommendationsystem.entity.School;
 import com.example.analysisandrecommendationsystem.service.SchoolService;
 import com.example.analysisandrecommendationsystem.service.impl.SchoolServiceImpl;
 
@@ -9,19 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/search985")
-public class Search985Name extends HttpServlet {
+@WebServlet("/getschoolInfo")
+public class GetSchoolInfoServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
         SchoolService service = new SchoolServiceImpl();
-        List<String> list = service.search985();
-        if (!list.isEmpty()){
-            request.getSession().setAttribute("list985",list);
-//            dispatcher到当前页面
-            System.out.println(list);
-            response.sendRedirect("/search211");
-        }
+        School school = new School();
+        List<String> majorlist = new ArrayList<>();
+        school = service.getSchoolInfo(name);
+        majorlist = service.getSchoolMajorlist(name);
+        request.getSession().setAttribute("school",school);
+        request.getSession().setAttribute("majorlist",majorlist);
+
     }
 }

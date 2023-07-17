@@ -101,6 +101,11 @@ ul {
 .ul-active {
     height: 140px;
 }
+
+.feedback ul-active {
+    height: 70px;
+}
+
 li {
     list-style: none;
 }
@@ -137,4 +142,19 @@ li {
     top: 50%;
     width: 15px;
     height: 15px;
+}
+
+/* 将滚动条滑块透明 */
+::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+a {
+    text-decoration: none; /* 清除下划线 */
+    color: rgba(255,255,255,0.5); /* 设置字体颜色为白色 */
+}
+
+a:hover{
+    text-decoration: none; /* 清除下划线 */
+    color: rgba(255,255,255,0.6); /* 设置字体颜色为白色 */
 }

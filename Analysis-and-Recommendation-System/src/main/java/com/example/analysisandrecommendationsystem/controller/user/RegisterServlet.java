@@ -16,7 +16,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        获得username和password的值
-        String username = request.getParameter("name");
+        String username = request.getParameter("username");
         String password = request.getParameter("password");
         UserService userService = new UserServiceImpl();
 
@@ -30,6 +30,12 @@ public class RegisterServlet extends HttpServlet {
                 request.getSession().setAttribute("user", user);
 //                重定向到某个方法
 //                request.getRequestDispatcher("/list").forward(request,response);
+            }
+//            有重名的人
+            else{
+                String errorMessage = "用户名已存在，请选择其他用户名。";
+                request.setAttribute("errorMessage", errorMessage);
+                request.getRequestDispatcher("/jsp/register.jsp").forward(request, response);
             }
         }
     }
