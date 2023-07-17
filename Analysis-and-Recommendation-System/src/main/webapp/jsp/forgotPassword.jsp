@@ -45,8 +45,8 @@
             <img src="../images/性别.svg" style="width: 15px; height: 15px;">
             <select id="sex" name="sex" required style="padding: 6px; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0); color: white; font-size: 0.8em; border: none; border-radius: 20px; outline: none;">
                 <option value="" disabled selected style="color: black;">选择性别</option>
-                <option value="male" style="color: #bfbfbf;">男性</option>
-                <option value="female" style="color: #bfbfbf;">女性</option>
+                <option value="男" style="color: #bfbfbf;">男</option>
+                <option value="女" style="color: #bfbfbf;">女</option>
             </select>
         </div>
 
