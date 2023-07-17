@@ -90,9 +90,9 @@ CREATE TABLE IF NOT EXISTS `enrollmentinfo` (
                                                 `score2021` int NOT NULL,
                                                 `score2022` int NOT NULL,
                                                 `province` varchar(20) NOT NULL,
-                                                `enrollementNumber2020` int NOT NULL,
-                                                `enrollementNumber2021` int NOT NULL,
-                                                `enrollementNumber2022` int NOT NULL,
+                                                `enrollmentNumber2020` int NOT NULL,
+                                                `enrollmentNumber2021` int NOT NULL,
+                                                `enrollmentNumber2022` int NOT NULL,
                                                 PRIMARY KEY (`name`,`province`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -142,7 +142,7 @@ INSERT INTO `advertisement` (`title`, `contenttext`, `name`) VALUES
                                                                  ('“哈工程大讲堂”专题讲座开讲啦！', '为了满足广大考生的报考需求\r\n\r\n搭建考生、家长与院校间沟通的桥梁\r\n\r\n特推出“哈工程大讲堂”系列专题讲座\r\n\r\n哈尔滨工程大学各学院（部）的资深教授在线开讲！\r\n\r\n趣味讲解专业知识\r\n\r\n展现学科风采底蕴\r\n\r\n揭秘行业发展动向\r\n\r\n为考生报考选择专业保驾护航！\r\n\r\n点击下方链接：\r\n\r\nhttps://gaokao.eol.cn/e_gx/df/heilongjiang/html/hrbeusp/index.html\r\n\r\n哈尔滨工程大学邀你一起筑梦深蓝！', '哈尔滨工程大学'),
                                                                  ('上海大学2023年高校专项计划暨“启航计划”招生章程', '一、学校全称\r\n\r\n上海大学\r\n\r\n二、就读地址\r\n\r\n宝山校区：上海市宝山区上大路99号\r\n\r\n延长校区：上海市静安区延长路149号\r\n\r\n嘉定校区：上海市嘉定区城中路20号\r\n\r\n三、办学层次\r\n\r\n本科\r\n\r\n四、办学类型\r\n\r\n公办普通高等学校\r\n\r\n五、招生管理机构\r\n\r\n上海大学本科招生工作领导小组是学校本科招生工作的最高决策机构，统一领导学校本科招生工作；招生与毕业生就业工作办公室是学校组织和实施本科招生工作的常设机构，负责学校本科招生的日常管理工作；机关纪委是学校本科招生工作的纪检机构。\r\n\r\n六、专业培养对入学外语考试语种的要求\r\n\r\n入学外语考试语种不限。入学后外语教学语种为英语，非英语语种的考生请慎重报考。\r\n\r\n七、报名对象和条件\r\n\r\n（一）该计划主要招收各有关省份（上海、北京、天津、海南、宁夏、青海、西藏等省（自治区、直辖市）除外）确定的高校专项计划实施区域中学勤奋好学、成绩优良的农村学生，具体实施区域由相关省（自治区、直辖市）确定。\r\n\r\n（二）学生符合下列所有条件即可报名：\r\n\r\n1.本人符合2023年统一高考报名条件；\r\n\r\n2.本人及父亲或母亲或法定监护人户籍地在实施区域的农村，本人具有该地区连续3年以上户籍；\r\n\r\n3.本人具有户籍所在县高中连续3年学籍并实际就读。\r\n\r\n注：从2023年高考招生起，往年被专项计划录取后放弃入学资格或退学的考生，不再具有专项计划报考资格。\r\n\r\n八、身体健康状况要求\r\n\r\n以教育部、原卫生部和中国残联印发的《普通高等学校招生体检工作指导意见》及有关补充规定为依据，考生须据实上报健康状况。若隐瞒病情病史，学校将按照学籍管理规定中有关退学与休学的规定执行。', '上海大学');
 
-INSERT INTO `enrollmentinfo` (`name`, `score2020`, `score2021`, `score2022`, `province`, `enrollementNumber2020`, `enrollementNumber2021`, `enrollementNumber2022`) VALUES
+INSERT INTO `enrollmentinfo` (`name`, `score2020`, `score2021`, `score2022`, `province`, `enrollmentNumber2020`, `enrollmentNumber2021`, `enrollmentNumber2022`) VALUES
                                                                                                                                                                         ('清华大学', 694, 696, 693, '四川', 42, 52, 49),
                                                                                                                                                                         ('北京大学', 695, 698, 694, '四川', 19, 19, 19),
                                                                                                                                                                         ('复旦大学', 691, 683, 679, '四川', 9, 68, 68),

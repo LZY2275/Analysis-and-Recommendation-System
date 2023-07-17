@@ -9,14 +9,14 @@
 <body style="background-color: #000000">
 
 <div>
-  <iframe name="topFrame" src="/jsp/top.jsp" borders="NO" width=100% height="110px" style="border: medium none;"></iframe>
+  <iframe name="topFrame" src="/jsp/top.jsp" borders="NO" width=100% height="110px" style="border: 1px none;"></iframe>
 </div>
 <div style="overflow:hidden;">
 <div style="float: left; width: 175px; height: calc(100% - 110px)" id="leftframe">
-  <iframe name="leftFrame" src="/jsp/left.jsp" onresize borders="NO" height=100% style="border: medium none;"></iframe>
+  <iframe name="leftFrame" src="/jsp/left.jsp" onresize borders="NO" height=100% style="border: 1px none;"></iframe>
 </div>
 <div style="float: left; width: calc(100% - 175px)" id="mainframe">
-  <iframe name="mainFrame" src="/jsp/main.jsp" onresize borders="NO" width=100% height="100%"></iframe>
+  <iframe name="mainFrame" src="/jsp/main.jsp" onresize borders="NO" width=100% height="100%" style="border: 1px none;"></iframe>
 </div>
   <div class="logout" style="position: fixed;bottom: 20px;left: 20px">
     <a href="/logout" style="text-decoration: none;color: white" target="">登出</a>
