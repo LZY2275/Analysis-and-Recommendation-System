@@ -64,7 +64,7 @@
         </div>
     </form>
     <div class="form-group" style="margin-top: 8px;">
-        <input type="submit" value="返回登录" class="btn" style="background-color: #45a049">
+        <input  href="../jsp/register.jsp" value="返回登录" class="btn" style="background-color: #45a049">
     </div>
 </div>
 

@@ -64,13 +64,13 @@
 </div>
 <script>
     //必须放在body最后 不能在head中就执行
-    const isAdministerSlider = document.getElementById('isAdministerSlider');//滑块点
-    const isAdministerCheckbox = document.getElementById('isAdminister');//隐藏的复选框
-
-    isAdministerSlider.addEventListener('click', function() {
-        isAdministerSlider.checked = !isAdministerSlider.checked;
-        isAdministerCheckbox.checked = !isAdministerCheckbox.checked;
-    });
+    // const isAdministerSlider = document.getElementById('isAdministerSlider');//滑块点
+    // const isAdministerCheckbox = document.getElementById('isAdminister');//隐藏的复选框
+    //
+    // isAdministerSlider.addEventListener('click', function() {
+    //     isAdministerSlider.checked = !isAdministerSlider.checked;
+    //     isAdministerCheckbox.checked = !isAdministerCheckbox.checked;
+    // });
 
     const rememberSlider = document.getElementById('rememberSlider');
     const rememberCheckbox = document.getElementById('remember');
