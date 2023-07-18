@@ -6,6 +6,7 @@ import com.example.analysisandrecommendationsystem.entity.User;
 import com.example.analysisandrecommendationsystem.service.UserService;
 
 import java.sql.Date;
+import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
@@ -34,5 +35,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public String getPassword(String name, Date birthday, String sex) {
         return userDao.getPassword(name,birthday,sex);
+    }
+
+    @Override
+    public List<User> getUserList() {
+        return userDao.getUserList();
+    }
+
+    @Override
+    public User getUserInfo(String username) {
+        return userDao.getUserInfo(username);
+    }
+
+    @Override
+    public void deleteUser(String username) {
+        userDao.deleteUser(username);
     }
 }

@@ -3,6 +3,7 @@ package com.example.analysisandrecommendationsystem.dao;
 import com.example.analysisandrecommendationsystem.entity.User;
 
 import java.sql.Date;
+import java.util.List;
 
 public interface UserDao {
 
@@ -15,4 +16,10 @@ public interface UserDao {
     void register(String username, String password);
 
     String getPassword(String name, Date birthday, String sex);
+
+    List<User> getUserList();
+
+    User getUserInfo(String username);
+
+    void deleteUser(String username);
 }

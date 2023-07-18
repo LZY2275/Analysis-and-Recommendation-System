@@ -3,6 +3,7 @@ package com.example.analysisandrecommendationsystem.service;
 import com.example.analysisandrecommendationsystem.entity.User;
 
 import java.sql.Date;
+import java.util.List;
 
 public interface UserService {
 
@@ -19,4 +20,10 @@ public interface UserService {
 
 
     String getPassword(String name, Date birthday, String sex);
+
+    List<User> getUserList();
+
+    User getUserInfo(String username);
+
+    void deleteUser(String username);
 }

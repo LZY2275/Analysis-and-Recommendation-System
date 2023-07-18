@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDaoImpl implements UserDao {
 
@@ -16,6 +18,9 @@ public class UserDaoImpl implements UserDao {
     private final static String REGISTER = "insert into user(username, password) values (?,?)";
     private final static String MODIFY = "UPDATE user SET password = ?, birthday = ?, userimgurl = ?, sex = ? where username = ?";
     private final static String GETPASSWORD = "select password from user where username = ? and birthday = ? and sex = ?";
+    private final static String LIST = "select * from user ";
+    private final static String INFO = "select * from user where username = ?";
+    private final static String DELETE = "delete from user where username = ?";
 
 
     @Override
@@ -136,5 +141,74 @@ public class UserDaoImpl implements UserDao {
         return password;
     }
 
-//    登出函数
+    @Override
+    public List<User> getUserList() {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<User> list = new ArrayList<>();
+        try {
+            connection = C3P0Util.getConnection();
+            preparedStatement = connection.prepareStatement(LIST);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                User user = new User();
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                user.setBirthday(resultSet.getDate("birthday"));
+                user.setUserimgurl(resultSet.getString("userimgurl"));
+                user.setSex(resultSet.getString("sex"));
+                list.add(user);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            C3P0Util.release(resultSet,preparedStatement,connection);
+        }
+        return list;
+    }
+
+    @Override
+    public User getUserInfo(String username) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        User user = new User();
+        try {
+            connection = C3P0Util.getConnection();
+            preparedStatement = connection.prepareStatement(INFO);
+            preparedStatement.setString(1,username);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                user.setBirthday(resultSet.getDate("birthday"));
+                user.setUserimgurl(resultSet.getString("userimgurl"));
+                user.setSex(resultSet.getString("sex"));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            C3P0Util.release(resultSet,preparedStatement,connection);
+        }
+        return user;
+    }
+
+    @Override
+    public void deleteUser(String username) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = C3P0Util.getConnection();
+            preparedStatement = connection.prepareStatement(DELETE);
+            preparedStatement.setString(1,username);
+            preparedStatement.execute();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            C3P0Util.release(null,preparedStatement,connection);
+        }
+    }
+
+
 }
