@@ -1,0 +1,43 @@
+.choose{
+    width: 60%;
+    height: 20%;
+    background-color: rgba(52,124,175,0.8);
+    text-align: center;
+    line-height: 20px;
+    left: 0;
+    top: 0;
+    position: relative;
+    padding: 5px;
+}
+
+.top{
+    width: 100%;
+}
+
+.form-inline{
+    justify-content: space-between;/*重要*/
+    display: flex;
+}
+
+.form-group{
+    display: inline-block;
+}
+
+.form-group2{
+    display: inline-block;
+    position: relative;
+}
+
+.form-group2 .btn2{
+    right: 0;
+    /*bottom: 5px;*/
+    position: absolute;
+    border: none;   // 去掉边框
+outline: none;  // 去掉点击按钮后的边框
+}
+
+.btn1{
+    right: 5px;
+    bottom: 5px;
+    position: absolute;
+}
