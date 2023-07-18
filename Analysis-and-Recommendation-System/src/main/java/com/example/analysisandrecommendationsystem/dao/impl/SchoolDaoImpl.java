@@ -3,6 +3,7 @@ package com.example.analysisandrecommendationsystem.dao.impl;
 import com.example.analysisandrecommendationsystem.dao.SchoolDao;
 import com.example.analysisandrecommendationsystem.entity.CollegeApplicationItem;
 import com.example.analysisandrecommendationsystem.entity.EnrollmentInfo;
+import com.example.analysisandrecommendationsystem.entity.Hotspot;
 import com.example.analysisandrecommendationsystem.entity.School;
 import com.example.analysisandrecommendationsystem.utils.C3P0Util;
 
@@ -10,6 +11,7 @@ import com.example.analysisandrecommendationsystem.utils.C3P0Util;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +23,7 @@ public class SchoolDaoImpl implements SchoolDao {
 
     private final static String GETENROLLMENTINFO = "select * from enrollmentinfo where name = ? and province = ?";
 
-    private final static String GETSCHOOLBYFORM = "select * from school natural join enrollmentinfo where (province = ?) and (type = ? or ? is null ) and ((score2022 < ?+5 and score2022 > ?-5)or ? is null )";
+    private final static String GETSCHOOLBYFORM = "select * from school natural join enrollmentinfo where (province = ? or ? is null) and (type = ? or ? is null ) and ((score2022 < ?+5 and score2022 > ?-5)or ? is null )";
 
     private final static String GETSCHOOLINFO = "select * from school where name = ?";
 
@@ -30,7 +32,7 @@ public class SchoolDaoImpl implements SchoolDao {
     private final static String DELETESCHOOL = "delete from school where name = ?";
     private final static String UPDATESCHOOL = "update school set `rank` = ?, `type` = ?, heat = ?, telephone = ?, introduction = ?, employmentRatio = ?, goAbroadRatio = ?, enrollmentRatio = ?, sexRatio = ?, location = ?, logo = ? where name = ?";
     private final static String INSERT = "insert into school(`rank`,`type`,heat, telephone, introduction, employmentRatio, goAbroadRatio, enrollmentRatio, sexRatio, location, logo, `name`) values(?,?,?,?,?,?,?,?,?,?,?,?)";
-
+    private final static String HOTSPOTLIST = "select * from hotspot";
     @Override
     public List<String> searchByName(String keyword) {
         Connection connection = null;
@@ -138,6 +140,7 @@ public class SchoolDaoImpl implements SchoolDao {
     @Override
     public List<CollegeApplicationItem> getSchoolByForm(String province, String type, int score) {
 //        "select * from school natural join enrollmentinfo where (province = ? or ? is null ) and (type = ? or ? is null ) and ((score2022 < ?+5 and score2022 > ?-5)or ? is null )";
+        System.out.println(province+" "+type+" "+score);
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -145,12 +148,23 @@ public class SchoolDaoImpl implements SchoolDao {
         try {
             connection = C3P0Util.getConnection();
             preparedStatement = connection.prepareStatement(GETSCHOOLBYFORM);
-            preparedStatement.setString(1,province);
-            preparedStatement.setString(2,type);
-            preparedStatement.setString(3,type);
-            preparedStatement.setInt(4,score);
+            if(province == null){
+                preparedStatement.setNull(1, Types.VARCHAR);
+                preparedStatement.setNull(2,Types.VARCHAR);
+            }else {
+                preparedStatement.setString(1,province);
+                preparedStatement.setString(2, province);
+            }
+            if(type == null){
+                preparedStatement.setNull(3,Types.VARCHAR);
+                preparedStatement.setNull(4,Types.VARCHAR);
+            }else {
+                preparedStatement.setString(3, type);
+                preparedStatement.setString(4, type);
+            }
             preparedStatement.setInt(5,score);
             preparedStatement.setInt(6,score);
+            preparedStatement.setInt(7,score);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 CollegeApplicationItem item = new CollegeApplicationItem();
@@ -337,5 +351,30 @@ public class SchoolDaoImpl implements SchoolDao {
         }finally {
             C3P0Util.release(null,preparedStatement,connection);
         }
+    }
+
+    @Override
+    public List<Hotspot> getHotSpotList() {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<Hotspot> list = new ArrayList<>();
+        try {
+            connection = C3P0Util.getConnection();
+            preparedStatement = connection.prepareStatement(HOTSPOTLIST);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                Hotspot hotspot = new Hotspot();
+                hotspot.setWord(resultSet.getString("word"));
+                hotspot.setHeatRatio(resultSet.getFloat("heatRatio"));
+                hotspot.setName(resultSet.getString("name"));
+                list.add(hotspot);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            C3P0Util.release(resultSet,preparedStatement,connection);
+        }
+        return list;
     }
 }

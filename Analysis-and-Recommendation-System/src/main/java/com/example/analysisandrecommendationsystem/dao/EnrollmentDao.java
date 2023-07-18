@@ -14,4 +14,6 @@ public interface EnrollmentDao {
     void deleteEnroll(String name, String province);
 
     void insertEnrollInfo(String name, String province, int s20, int s21, int s22, int e20, int e21, int e22);
+
+    List<EnrollmentInfo> getEnrollListByName(String name);
 }

@@ -17,6 +17,7 @@ public class EnrollmentDaoImpl implements EnrollmentDao {
     private final static String UPDATE = "update enrollmentinfo set score2020 = ?, score2021=?, score2022 = ?, enrollmentNumber2020 = ?, enrollmentNumber2021 = ?, enrollmentNumber2022 = ? where `name` = ? and province = ?";
     private final static String DELETE = "delete from enrollmentinfo where `name` = ? and province = ?";
     private final static String INSERT = "insert into enrollmentinfo(score2020, score2021, score2022, enrollmentNumber2020, enrollmentNumber2021, enrollmentNumber2022, name, province) values(?, ?, ?, ?, ?, ?, ?, ?)";
+    private final static String LISTBYNAME = "select * from enrollmentinfo where `name` = ?";
     @Override
     public List<EnrollmentInfo> getEnrollList() {
         Connection connection = null;
@@ -138,5 +139,36 @@ public class EnrollmentDaoImpl implements EnrollmentDao {
         }finally {
             C3P0Util.release(null,preparedStatement,connection);
         }
+    }
+
+    @Override
+    public List<EnrollmentInfo> getEnrollListByName(String name) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<EnrollmentInfo> list = new ArrayList<>();
+        try {
+            connection = C3P0Util.getConnection();
+            preparedStatement = connection.prepareStatement(LISTBYNAME);
+            preparedStatement.setString(1,name);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                EnrollmentInfo enrollmentInfo = new EnrollmentInfo();
+                enrollmentInfo.setName(resultSet.getString("name"));
+                enrollmentInfo.setProvince(resultSet.getString("province"));
+                enrollmentInfo.setEnrollmentNumber2021(resultSet.getInt("enrollmentNumber2021"));
+                enrollmentInfo.setEnrollmentNumber2022(resultSet.getInt("enrollmentNumber2022"));
+                enrollmentInfo.setEnrollmentNumber2020(resultSet.getInt("enrollmentNumber2020"));
+                enrollmentInfo.setScore2022(resultSet.getInt("score2022"));
+                enrollmentInfo.setScore2021(resultSet.getInt("score2021"));
+                enrollmentInfo.setScore2020(resultSet.getInt("score2020"));
+                list.add(enrollmentInfo);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            C3P0Util.release(resultSet,preparedStatement,connection);
+        }
+        return list;
     }
 }

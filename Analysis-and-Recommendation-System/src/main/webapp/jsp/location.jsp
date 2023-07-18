@@ -12,7 +12,7 @@
     <link href="../css/location.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-    <div id="screen" class="main"></div>
+    <div id="screen" class="main" style="margin-left: 50px;"></div>
     <script type="text/javascript" src="../js/echarts.js"></script>
     <script type="text/javascript" src="../js/echarts.min.js"></script>
     <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=htxr8lFN7V7U0MajYdkHeeoYMVLngh6N"></script>
@@ -216,7 +216,7 @@
     var chartDom = document.getElementById('frame1');
     var myChart = echarts.init(chartDom);
     var option;
-    var barData = [140280, 147029, 185637, 146616, 145881, 154058, 139583, 170105];
+    var barData = [ 185637,170105, 154058, 147029, 146616 , 145881,140280, 139583];
 
     option = {
         grid: {
@@ -240,7 +240,7 @@
         },
         xAxis: {
             type: 'value',
-            data: [140280, 147029, 185637, 146616, 145881, 154058, 139583, 170105],
+            data: [ 185637,170105, 154058, 147029, 146616 , 145881,140280, 139583],
             splitLine:{
                 show:false
             },
@@ -256,7 +256,7 @@
         yAxis: {
             type: 'category',
             inverse: true,
-            data: [ '深圳大学', '中山大学', '四川大学', '厦门大学', '中南大学','西南大学', '浙江大学','清华大学'],
+            data: ['四川大学', '清华大学','西南大学', '中山大学',  '厦门大学', '中南大学','深圳大学', '浙江大学'],
             axisLabel: {
                 textStyle: {
                     show:true,
@@ -292,14 +292,14 @@
                     emphasis: {
                         // color: '##448aff'
                         shadowBlur: '20',
-                        shadowColor: 'rgb(0,147,252)',
+                        shadowColor: 'rgb(255,255,255)',
                         focus: 'series'
                     },
                     //颜色样式部分
                     normal: {
                         color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-                            { offset: 0, color: "#3977E6" },
-                            { offset: 1, color: "#37BBF8" },
+                            { offset: 0, color: "#b4dcf1" },
+                            { offset: 1, color: "#FFFFFF" },
                         ]),
                     },
                 },

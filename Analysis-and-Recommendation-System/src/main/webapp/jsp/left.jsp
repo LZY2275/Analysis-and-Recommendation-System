@@ -254,7 +254,7 @@
                 a.textContent = item;
                 //div的name属性为大学的名字
                 a.setAttribute("href","/getschoolInfo?name="+item)
-                a.setAttribute("target","mainFrame.subFrame")
+                a.setAttribute("target","mainFrame")
                 div.appendChild(a);
                 container.appendChild(div);
             }

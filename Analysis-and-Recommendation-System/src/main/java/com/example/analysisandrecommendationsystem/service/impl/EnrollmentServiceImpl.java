@@ -33,4 +33,9 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     public void insertEnrollInfo(String name, String province, int s20, int s21, int s22, int e20, int e21, int e22) {
         enrollmentDao.insertEnrollInfo(name,province,s20,s21,s22,e20,e21,e22);
     }
+
+    @Override
+    public List<EnrollmentInfo> getEnrollListByName(String name) {
+        return enrollmentDao.getEnrollListByName(name);
+    }
 }
