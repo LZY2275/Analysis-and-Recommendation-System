@@ -44,9 +44,9 @@
         </div>
 
         <div class="help-links">
-            <div style="width: 40px">
+            <div class="toggle-switch" style="width: 40px">
                 <input type="checkbox" id="isAdminister" name="role" value="admin">
-                <!--<span id="isAdministerSlider" class="toggle-slider"></span>-->
+                <span id="isAdministerSlider" class="toggle-slider"></span>
             </div>
             <label style="display: flex; align-items: flex-start; margin-left: 0px;">管理员</label>
 
@@ -64,13 +64,13 @@
 </div>
 <script>
     //必须放在body最后 不能在head中就执行
-    // const isAdministerSlider = document.getElementById('isAdministerSlider');//滑块点
-    // const isAdministerCheckbox = document.getElementById('isAdminister');//隐藏的复选框
-    //
-    // isAdministerSlider.addEventListener('click', function() {
-    //     isAdministerSlider.checked = !isAdministerSlider.checked;
-    //     isAdministerCheckbox.checked = !isAdministerCheckbox.checked;
-    // });
+    const isAdministerSlider = document.getElementById('isAdministerSlider');//滑块点
+    const isAdministerCheckbox = document.getElementById('isAdminister');//隐藏的复选框
+
+    isAdministerSlider.addEventListener('click', function() {
+        isAdministerSlider.checked = !isAdministerSlider.checked;
+        isAdministerCheckbox.checked = !isAdministerCheckbox.checked;
+    });
 
     const rememberSlider = document.getElementById('rememberSlider');
     const rememberCheckbox = document.getElementById('remember');

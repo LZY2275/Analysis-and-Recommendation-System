@@ -4,7 +4,7 @@
         <property name="driverClass">com.mysql.cj.jdbc.Driver</property>
         <property name="jdbcUrl">jdbc:mysql://localhost:3306/schoolsys?characterEncoding=UTF-8</property>
         <property name="user">root</property>
-        <property name="password">123456</property>
+        <property name="password">13176230068ma</property>
         <!--初始化时创建的连接数，应在minPoolSize与maxPoolSize之间取值。默认为3； -->
         <property name="initialPoolSize">30</property>
         <!-- 最大空闲时间，超过空闲时间的连接将被丢弃。为0或负数则永不丢弃。默认为0； -->

@@ -20,4 +20,12 @@ public interface SchoolDao {
     School getSchoolInfo(String name);
 
     List<String> getSchoolMajorList(String name);
+
+    List<School> getSchoolList();
+
+    void deleteSchool(String name);
+
+    void updateSchoolInfo(String name, String rank, String type, String heat, String telephone, String introduction, float em, float go, float en, float se, String location, String logo);
+
+    void insertSchool(String name, String rank, String type, String heat, String telephone, String introduction, float em, float go, float en, float se, String location, String logo);
 }

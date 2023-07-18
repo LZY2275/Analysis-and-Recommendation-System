@@ -13,4 +13,13 @@ public class Utils {
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
         return sqlDate;
     }
+
+    public float stringtoFloat(String floatString){
+        float floatValue = Float.parseFloat(floatString);
+        return floatValue;
+    }
+
+    public int stringtoInt(String intString){
+        return Integer.parseInt(intString);
+    }
 }

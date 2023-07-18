@@ -29,6 +29,11 @@ public class ModifyUserInfoServlet extends HttpServlet {
 
         // 获取提交来的信息
         Part avatarPart = request.getPart("avatar");
+        String ava = request.getParameter("avatar");
+
+        System.out.println(avatarPart);
+        System.out.println(ava);
+
         // 生成唯一的文件名
         String fileName = UUID.randomUUID().toString() + "-" + avatarPart.getSubmittedFileName();
 
@@ -40,7 +45,7 @@ public class ModifyUserInfoServlet extends HttpServlet {
         avatarPart.write(uploadDir + fileName);
 
         // 构造URL
-        String fileUrl = "upload/" + fileName;
+        String fileUrl = "../upload/" + fileName;
 
         String birthdayString = request.getParameter("birthday");
         String genderString = request.getParameter("gender");
@@ -67,8 +72,7 @@ public class ModifyUserInfoServlet extends HttpServlet {
         user = userService.login(username,password);
         request.getSession().setAttribute("user", user);
 
-//       重定向到某个方法
-//       request.getRequestDispatcher("/list").forward(request,response);
+        response.sendRedirect("/jsp/my.jsp");
     }
 
 }

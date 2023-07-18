@@ -63,6 +63,7 @@
             <img src="../images/密码.svg" style="width: 15px; height: 15px;">
             <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="确认密码">
         </div>
+        <input name="option" value="用户操作" hidden type="text">
 
         <div class="form-group">
             <input type="submit" value="注册" class="btn">

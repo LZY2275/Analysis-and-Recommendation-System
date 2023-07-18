@@ -18,7 +18,9 @@ public class RegisterServlet extends HttpServlet {
 //        获得username和password的值
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String option = request.getParameter("option");
         UserService userService = new UserServiceImpl();
+
 
 //        由于username是主键，现在数据库中查找是否有重名的
         if (!username.equals("") && username != null) {
@@ -30,13 +32,25 @@ public class RegisterServlet extends HttpServlet {
                 request.getSession().setAttribute("user", user);
 //                重定向到某个方法
 //                request.getRequestDispatcher("/list").forward(request,response);
+                if(option.equals("管理员操作")){
+                    request.getSession().removeAttribute("user");
+                    request.getRequestDispatcher("/jsp/manageuser.jsp").forward(request,response);
+                }else {
+                    request.getRequestDispatcher("/search985").forward(request, response);
+                }
             }
 //            有重名的人
             else{
                 String errorMessage = "用户名已存在，请选择其他用户名。";
                 request.setAttribute("errorMessage", errorMessage);
-                request.getRequestDispatcher("/jsp/register.jsp").forward(request, response);
+                if(option.equals("管理员操作")){
+                    request.getRequestDispatcher("/jsp/addnewuser.jsp").forward(request,response);
+                }else {
+                    request.getRequestDispatcher("/jsp/register.jsp").forward(request, response);
+                }
             }
+
         }
+
     }
 }

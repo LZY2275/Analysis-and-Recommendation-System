@@ -5,6 +5,7 @@
   Time: 16:30
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,10 +13,10 @@
     <link rel="stylesheet" href="../css/my.css">
     <style>
         body {
-            background-image: url('../images/数据大屏背景/bg.jpg'); /* 设置背景图片 */
-            background-size: cover; /* 背景图片大小自适应屏幕 */
-            background-repeat: no-repeat; /* 背景图片不重复 */
-            height: 100vh; /* 设置body高度为屏幕高度 */
+            /*background-image: url('../images/数据大屏背景/bg.jpg'); !* 设置背景图片 *!*/
+            /*background-size: cover; !* 背景图片大小自适应屏幕 *!*/
+            /*background-repeat: no-repeat; !* 背景图片不重复 *!*/
+            /*height: 100vh; !* 设置body高度为屏幕高度 *!*/
             display: flex; /* 使用弹性布局 */
             align-items: center; /* 垂直居中对齐 */
             justify-content: center; /* 水平居中对齐 */
@@ -25,81 +26,98 @@
 <body>
 <div class="container">
 
-<%--    顶端装饰图片--%>
-    <div style="width: 100%">
-        <img src="../images/数据大屏头部切图/titlebg8.png" style="width: 100%;object-fit: contain;">
-    </div>
+<%--    &lt;%&ndash;    顶端装饰图片&ndash;%&gt;--%>
+<%--    <div style="width: 100%">--%>
+<%--        <img src="../images/数据大屏头部切图/titlebg8.png" style="width: 100%;object-fit: contain;">--%>
+<%--    </div>--%>
 
-<%--    实际内容--%>
+    <%--    实际内容--%>
     <div class="content">
-
-        <div class="info-item">
-            <label>头像</label>
-            <%-- 装头像图片的容器，使图片显示为圆形 --%>
-            <div id="avatarImageDiv" style="margin-left: auto; margin-right: 10px; border-radius: 50%; width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
-                <%-- 后端提供给图片或者图片的url --%>
-                <img id="avatarImage" src="../images/头像%20男孩.svg" style="width: 100%; height: 100%;">
+        <form action="/modifyuserinfo" method="post" enctype="multipart/form-data">
+            <div class="info-item">
+                <label for="avatar">头像:</label>
+                <input type="file" id="avatar" name="avatar" accept="image/*" onchange="previewAvatar(event)" value="${user.userimgurl}"/>
+<%--                <input id="default-value" type="hidden" name="avatar" value="${user.userimgurl}">--%>
+                <%-- 装头像图片的容器，使图片显示为圆形 --%>
+                <div id="avatarImageDiv" style="margin-left: auto; margin-right: 10px; border-radius: 50%; width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
+                    <%-- 后端提供给图片或者图片的url --%>
+                    <img id="avatarPreview" src="${user.userimgurl}" style="width: 100%; height: 100%;">
+                </div>
+    <%--            <div style="height: 60%; width:10%;">--%>
+    <%--                <button id="confirmButtonAvatar" onclick="saveAvatar()" style="display: none; background-color: rgba(255, 255, 255, 0.5); color: white">确认</button>--%>
+    <%--                <button id="cancelButtonAvatar" onclick="cancelEditAvatar()" style="display: none; background-color: rgba(255, 255, 255, 0.5); color: white">取消</button>--%>
+    <%--                <img src="../images/箭头 右.svg" id="editButtonAvatar" onclick="selectAvatar()" style="height: 100%; width: 100%">--%>
+    <%--            </div>--%>
             </div>
-            <%-- 装头像图片的容器，使图片显示为圆形 --%>
-            <div id="avatarImageInputDiv" style="display: none; margin-left: auto; margin-right: 10px; border-radius: 50%; width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
-                <%-- 显示从本地选择的图片 --%>
-                <img id="avatarImageInput" style="width: 100%; height: 100%;">
+
+            <div class="info-item">
+                <%-- 昵称不能被修改 --%>
+                <label>昵称</label>
+                <%-- 后端需要将用户名显示在id="nickName"的label上 --%>
+                <label id="nickName" class="special-label">${user.username}</label>
+    <%--            <div style="height: 60%; width: 10%;">--%>
+    <%--                <!-- 使用onclick事件来调用JavaScript函数显示提示框 -->--%>
+    <%--                <img src="../images/箭头 右.svg" style="height: 100%; width: 100%" onclick="showTooltip()">--%>
+    <%--            </div>--%>
             </div>
-            <div style="height: 60%; width:10%;">
-                <button id="confirmButtonAvatar" onclick="saveAvatar()" style="display: none; background-color: rgba(255, 255, 255, 0.5); color: white">确认</button>
-                <button id="cancelButtonAvatar" onclick="cancelEditAvatar()" style="display: none; background-color: rgba(255, 255, 255, 0.5); color: white">取消</button>
-                <img src="../images/箭头 右.svg" id="editButtonAvatar" onclick="selectAvatar()" style="height: 100%; width: 100%">
+
+            <div class="info-item">
+                <label for="gender">性别:</label>
+                <%-- 后端需要将用户名显示在id="genderInput"的label上--%>
+<%--                <label id="gender" class="special-label" >男</label>--%>
+<%--                <select id="genderSelect" name="genderSelect" required style=" display: none;">--%>
+<%--                    <option value="男" style="color: #bfbfbf;">男</option>--%>
+<%--                    <option value="女" style="color: #bfbfbf;">女</option>--%>
+<%--                </select>--%>
+<%--                <div style="height: 60%; width:10%;">--%>
+<%--                    <button id="confirmButtonGender" onclick="saveGender()" style=" display: none; background-color: rgba(255, 255, 255, 0.5); color: white">确认</button>--%>
+<%--                    <button id="cancelButtonGender" onclick="cancelEditGender()" style=" display: none; background-color: rgba(255, 255, 255, 0.5); color: white">取消</button>--%>
+<%--                    <img src="../images/箭头 右.svg" id="editButtonGender" onclick="enableEditGender()" style="height: 100%; width: 100%">--%>
+<%--                </div>--%>
+                <select id="gender" name="gender">
+                    <c:if test="${user.sex == '男'}">
+                        <option value="male" selected>男</option>
+                        <option value="female">女</option>
+                    </c:if>
+                    <c:if test="${user.sex == '女'}">
+                        <option value="male">男</option>
+                        <option value="female" selected>女</option>
+                    </c:if>
+                </select>
             </div>
-        </div>
 
-        <div class="info-item">
-            <%-- 昵称不能被修改 --%>
-            <label>昵称</label>
-            <%-- 后端需要将用户名显示在id="nickName"的label上 --%>
-            <label id="nickName" class="special-label">马硕</label>
-            <div style="height: 60%; width: 10%;">
-                <!-- 使用onclick事件来调用JavaScript函数显示提示框 -->
-                <img src="../images/箭头 右.svg" style="height: 100%; width: 100%" onclick="showTooltip()">
+
+            <div class="info-item">
+                <label for="birthday">生日日期:</label>
+
+                <%-- 后端需要将生日显示在id="genderInput"的label上--%>
+<%--                <label id="birthday" class="special-label" >2002-12-11</label>--%>
+                <input type="date" id="birthday" name="birthday" value="${user.birthday}" />
             </div>
-        </div>
 
-        <div class="info-item">
-            <label>性别</label>
-            <%-- 后端需要将用户名显示在id="genderInput"的label上--%>
-            <label id="gender" class="special-label" >男</label>
-            <select id="genderSelect" name="genderSelect" required style=" display: none;">
-                <option value="男" style="color: #bfbfbf;">男</option>
-                <option value="女" style="color: #bfbfbf;">女</option>
-            </select>
-            <div style="height: 60%; width:10%;">
-                <button id="confirmButtonGender" onclick="saveGender()" style=" display: none; background-color: rgba(255, 255, 255, 0.5); color: white">确认</button>
-                <button id="cancelButtonGender" onclick="cancelEditGender()" style=" display: none; background-color: rgba(255, 255, 255, 0.5); color: white">取消</button>
-                <img src="../images/箭头 右.svg" id="editButtonGender" onclick="enableEditGender()" style="height: 100%; width: 100%">
+            <div class="info-item">
+                <label for="password">密码:</label>
+<%--                <img src="../images/箭头 右.svg" onclick="redirectToChangePasswordPage()" style="cursor: pointer;">--%>
+                <input type="text" id="password" name="password" value="${user.password}" />
             </div>
-        </div>
 
-
-        <div class="info-item">
-            <label>生日</label>
-            <%-- 后端需要将生日显示在id="genderInput"的label上--%>
-            <label id="birthday" class="special-label" >2002-12-11</label>
-            <input type="text" id="birthdayInput" name="birthdayInput" style="display: none">
-            <div style="height: 60%; width:10%;">
-                <button id="confirmButtonBirthday" onclick="saveBirthday()" style="display: none; background-color: rgba(255, 255, 255, 0.5); color: white">确认</button>
-                <button id="cancelButtonBirthday" onclick="cancelEditBirthday()" style="display: none; background-color: rgba(255, 255, 255, 0.5); color: white">取消</button>
-                <img src="../images/箭头 右.svg" id="editButtonBirthday" onclick="enableEditBirthday()" style="height: 100%; width: 100%">
-            </div>
-        </div>
-
-        <div class="info-item">
-            <label>修改密码</label>
-            <img src="../images/箭头 右.svg" onclick="redirectToChangePasswordPage()" style="cursor: pointer;">
-        </div>
-
+            <input type="submit" value="提交" />
+        </form>
     </div>
 
 </div>
 <script>
+    function previewAvatar(event) {
+        var input = event.target;
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById("avatarPreview").src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
     function selectAvatar() {
         const avatarImageDiv = document.getElementById('avatarImageDiv');
         const avatarImage = document.getElementById('avatarImage');
