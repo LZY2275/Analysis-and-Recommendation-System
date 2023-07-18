@@ -112,14 +112,14 @@
         <div class="menu-first-items" id="feedback">
             <ul>
                 <li>
-                    <a href="/jsp/my.jsp" target="mainFrame">
+                    <a href="/jsp/unprocessedUserFeedback.jsp" target="mainFrame">
 
                         <div class="li-text li-underline">未处理</div>
                     </a>
                 </li>
 
                 <li>
-                    <a href="/jsp/my.jsp" target="mainFrame">
+                    <a href="/jsp/processedUserFeedback.jsp" target="mainFrame">
                         <div class="li-text li-underline">已处理</div>
                     </a>
                 </li>

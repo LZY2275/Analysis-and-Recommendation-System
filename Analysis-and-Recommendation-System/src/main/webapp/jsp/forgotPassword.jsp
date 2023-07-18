@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="../css/authentication.css">
   <style>
     body {
-      /*background-image: url('../images/数据大屏背景/bg.jpg'); !* 设置背景图片 *!*/
+      background-image: url('../images/数据大屏背景/bg.jpg'); /* 设置背景图片 */
       background-size: cover; /* 背景图片大小自适应屏幕 */
       background-repeat: no-repeat; /* 背景图片不重复 */
       height: 100vh; /* 设置body高度为屏幕高度 */
