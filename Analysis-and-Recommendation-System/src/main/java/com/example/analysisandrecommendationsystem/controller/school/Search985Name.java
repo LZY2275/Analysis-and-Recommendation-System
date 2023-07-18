@@ -20,7 +20,7 @@ public class Search985Name extends HttpServlet {
         if (!list.isEmpty()){
             request.getSession().setAttribute("list985",list);
 //            dispatcher到当前页面
-            System.out.println(list);
+//            System.out.println(list);
             response.sendRedirect("/search211");
         }
     }

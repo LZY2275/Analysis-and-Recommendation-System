@@ -8,6 +8,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<style>
+    .submitbtn{
+        background-color: #515195;
+        text-decoration: none;
+        width: 150px;
+        height: 50px;
+        border-radius: 999px;
+        color: white;
+        font-size: xx-small;
+        font-weight: bold;
+    }
+</style>
 <head>
     <title>个人信息</title>
     <link rel="stylesheet" href="../css/my.css">
@@ -100,8 +112,9 @@
 <%--                <img src="../images/箭头 右.svg" onclick="redirectToChangePasswordPage()" style="cursor: pointer;">--%>
                 <input type="text" id="password" name="password" value="${user.password}" />
             </div>
-
-            <input type="submit" value="提交" />
+            <div style="float:right">
+                <input type="submit" value="提交" class="submitbtn"/>
+            </div>
         </form>
     </div>
 

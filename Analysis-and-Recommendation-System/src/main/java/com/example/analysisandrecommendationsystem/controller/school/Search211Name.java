@@ -21,6 +21,6 @@ public class Search211Name extends HttpServlet {
             request.getSession().setAttribute("list211",list);
             response.sendRedirect("/adlist");
         }
-        System.out.println(list);
+//        System.out.println(list);
     }
 }

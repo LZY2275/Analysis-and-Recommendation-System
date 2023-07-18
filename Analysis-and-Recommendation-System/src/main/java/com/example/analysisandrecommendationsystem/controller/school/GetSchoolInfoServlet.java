@@ -23,8 +23,10 @@ public class GetSchoolInfoServlet extends HttpServlet {
         List<String> majorlist = new ArrayList<>();
         school = service.getSchoolInfo(name);
         majorlist = service.getSchoolMajorlist(name);
+        System.out.println(school.getName());
+        System.out.println(majorlist);
         request.getSession().setAttribute("school",school);
         request.getSession().setAttribute("majorlist",majorlist);
-
+        response.sendRedirect("/jsp/universityinfo.jsp");
     }
 }
