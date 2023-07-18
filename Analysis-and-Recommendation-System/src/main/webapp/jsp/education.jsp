@@ -19,10 +19,10 @@
     <div class="top">
         <img src="../images/top.png" style="width: 100%; object-fit: contain">
     </div>
-    <form class="form-inline" action="bookListByType" method="post">
+    <form class="form-inline" action="/getschollform" method="post">
         <div class="form-group">
             <label>就读地区:</label>
-            <select name="location" class="form-control">
+            <select name="province" class="form-control">
                 <option selected>请选择</option>
                 <option>北京</option>
                 <option>天津</option>
@@ -59,7 +59,7 @@
         </div>
         <div class="form-group">
             <label>大学类型:</label>
-            <select name="school_type" class="form-control">
+            <select name="type" class="form-control">
                 <option selected>请选择</option>
                 <option>综合类</option>
                 <option>语言类</option>
@@ -77,11 +77,10 @@
         </div>
         <div class="form-group">
             <label for="input">成绩:</label>
-            <input type="text" class="form-control" id="input" placeholder="请输入高考成绩" name="grades">
+            <input type="text" class="form-control" id="input" placeholder="请输入高考成绩" name="score">
         </div>
-
+        <input type="submit" class="btn1" value="获取"/>
     </form>
-    <input type="submit" class="btn1" value="获取"/>
 
     <form class="form-inline" action="bookListByType" method="post">
         <div class="form-group2">
@@ -103,33 +102,45 @@
 <%--    }--%>
 <%--</script>--%>
 
-<table class="table table-hover">
-    <tr align="center">
-        <td>招生学校</td>
-        <td>历年</td>
-        <td>2022</td>
-        <td>2021</td>
-        <td>2020</td>
-        <td>2023招生计划</td>
-        <td>操作</td>
+<table class="table" rules="rows">
+    <tr>
+        <th>招生学校</th>
+        <th>类型</th>
+        <th>地区</th>
+        <th>历年</th>
+        <th>2022</th>
+        <th>2021</th>
+        <th>2020</th>
+        <th>操作</th>
     </tr>
-    <c:forEach var="item" items="${schoolInfos}">
-        <tr align="center">
-            <td>${item.school_name}</td>
-            <td>${item.preyear}</td>
-            <td>${item.year2022}</td>
-            <td>${item.year2021}</td>
-            <td>${item.year2020}</td>
-            <td>${item.year2023}</td>
-<%--            <td>--%>
-<%--                <c:choose>--%>
-<%--                    <c:when test="${item.is_borrow==1}">已借</c:when>--%>
-<%--                    <c:when test="${item.is_borrow==0}">未借</c:when>--%>
-<%--                </c:choose>--%>
-<%--            </td>--%>
-            <td><a href="choose.jsp" target="mainframe">查看院校</a></td>
+
+    <table>
+        <tr>
+            <c:forEach var="sch" items="${applicationitem}">
+                <td>${sch.logo}${sch.name}</td>
+                <td>${sch.type}</td>
+                <td>${sch.location}</td>
+                <td>分数线<br>招生人数</td>
+                <td>${sch.score2022}<br>${enroll.enrollmentNumber2022}</td>
+                <td>${sch.score2021}<br>${enroll.enrollmentNumber2021}</td>
+                <td>${sch.score2020}<br>${enroll.enrollmentNumber2020}</td>
+                <td><button class="btn3"><a href="../jsp/choose.jsp" target="mainframe">查看院校</a></button></td>
+            </c:forEach>
         </tr>
-    </c:forEach>
+
+        <tr>
+            <c:forEach var="sch" items="${applicationitem}">
+                <td>${sch.logo}${sch.name}</td>
+                <td>${sch.type}</td>
+                <td>${sch.location}</td>
+                <td>分数线<br>招生人数</td>
+                <td>${sch.score2022}<br>${enroll.enrollmentNumber2022}</td>
+                <td>${sch.score2021}<br>${enroll.enrollmentNumber2021}</td>
+                <td>${sch.score2020}<br>${enroll.enrollmentNumber2020}</td>
+                <td><button class="btn3"><a href="../jsp/choose.jsp" target="mainframe">查看院校</a></button></td>
+            </c:forEach>
+        </tr>
+    </table>
 </table>
 
 </body>
