@@ -58,53 +58,6 @@
             {name: '台湾', value: '0', name985: '无', value211: '0', name211: '无'},
             {name: '南海诸岛', value: '0', name985: '无', value211: '0', name211: '无'}
         ];
-        var geoCoordMap = {
-            海门: [121.15, 31.89],
-
-        };
-        var convertData = function (data) {
-            var res = [];
-            for (var i = 0; i < data.length; i++) {
-                var geoCoord = geoCoordMap[data[i].name];
-                if (geoCoord) {
-                    res.push({
-                        name: data[i].name,
-                        value: geoCoord.concat(data[i].value)
-                    });
-                }
-            }
-            return res;
-        };
-        function renderItem(params, api) {
-            var coords = [
-                [116.7, 39.53],
-                [103.73, 36.03],
-                [112.91, 27.87],
-                [120.65, 28.01],
-                [119.57, 39.95]
-            ];
-            var points = [];
-            for (var i = 0; i < coords.length; i++) {
-                points.push(api.coord(coords[i]));
-            }
-            var color = api.visual('color');
-
-            return {
-                type: 'polygon',
-                shape: {
-                    points: echarts.graphic.clipPointsByRect(points, {
-                        x: params.coordSys.x,
-                        y: params.coordSys.y,
-                        width: params.coordSys.width,
-                        height: params.coordSys.height
-                    })
-                },
-                style: api.style({
-                    fill: color,
-                    stroke: echarts.color.lift(color)
-                })
-            };
-        }
 
         // $.ajax({
         //     url: "../json/province.json",//json文件位置，文件名
@@ -152,7 +105,7 @@
                         textStyle: {
                             color: '#000000',
                             fontFamily: 'taiekaishu',
-                            fontSize: '12px'
+                            fontSize: '15px'
                         }
                     },
                     //选中高亮情况下配置项
@@ -185,7 +138,7 @@
                 text: '全国所有大学数量分布',
                 left: 'center',
                 textStyle: {
-                    color: '#000000',
+                    color: '#FFFFFF',
                     fontFamily: 'taiekaishu',
                     fontSize: '30px',
                     fontWeight: 'normal'
@@ -221,7 +174,8 @@
                     type: 'map',
                     map: 'china',
                     label: {
-                        show: true
+                        show: true,
+                        color: '#FFFFFF'
                     },
                     roam: true,
                     //【此参数必须配置，否则visualMap不起作用】
@@ -242,19 +196,19 @@
         });
     </script>
 
-    <script>
-        window.onload=function(){
-            var a = document.getElementById("screen");//获取div块对象
-            var Height=document.documentElement.clientHeight;//取得浏览器页面可视区域的宽度
-            var Width=document.documentElement.clientWidth;//取得浏览器页面可视区域的宽度
-            var gao1 = a.offsetHeight;//获取div块的高度值
-            var gao2 = a.offsetWidth;//获取div块的宽度值
-            var Sgao1= (Height - gao1)/2+"px";
-            var Sgao2= (Width - gao2)/2+"px";
-            a.style.top=Sgao1;
-            a.style.left=Sgao2;
-        }
-    </script>
+<%--    <script>--%>
+<%--        window.onload=function(){--%>
+<%--            var a = document.getElementById("screen");//获取div块对象--%>
+<%--            var Height=document.documentElement.clientHeight;//取得浏览器页面可视区域的宽度--%>
+<%--            var Width=document.documentElement.clientWidth;//取得浏览器页面可视区域的宽度--%>
+<%--            var gao1 = a.offsetHeight;//获取div块的高度值--%>
+<%--            var gao2 = a.offsetWidth;//获取div块的宽度值--%>
+<%--            var Sgao1= (Height - gao1)/2+"px";--%>
+<%--            var Sgao2= (Width - gao2)/2+"px";--%>
+<%--            a.style.top=Sgao1;--%>
+<%--            a.style.left=Sgao2;--%>
+<%--        }--%>
+<%--    </script>--%>
 
 <div class="right" id="frame1"></div>
 <script  type="text/javascript">
@@ -294,6 +248,7 @@
                 textStyle: {
                     show:true,
                     color: "#fff",
+                    fontFamily: 'jixiangsongti'
                 },
                 rotate:20,
             },
@@ -306,14 +261,11 @@
                 textStyle: {
                     show:true,
                     color: "#fff",
+                    fontFamily: 'jixiangsongti'
                 },
             },
             animationDuration: 1000,
             animationDurationUpdate: 1000,
-            // //key文字大小
-            // nameTextStyle: {
-            //     fontSize: 5,
-            // }
         },
         tooltip: {
             trigger: 'axis',
@@ -336,18 +288,6 @@
                 valueAnimation: true,
                 barWidth: 20,
                 //Y轴数字显示部分
-                label: {
-                    normal: {
-                        show: true,
-                        position: "inside",
-                        valueAnimation: true,
-                        offset: [5, -2],
-                        textStyle: {
-                            color: "#FFFFFF",
-                            fontSize: 10,
-                        },
-                    },
-                },
                 itemStyle: {
                     emphasis: {
                         // color: '##448aff'
@@ -412,6 +352,7 @@
                     textStyle: {
                         show:true,
                         color: "#fff",
+                        fontFamily: 'jixiangsongti'
                     },
                     rotate:20,
                 },
@@ -424,14 +365,11 @@
                     textStyle: {
                         show:true,
                         color: "#fff",
+                        fontFamily: 'jixiangsongti'
                     },
                 },
                 animationDuration: 1000,
                 animationDurationUpdate: 1000,
-                // //key文字大小
-                // nameTextStyle: {
-                //     fontSize: 5,
-                // }
             },
             tooltip: {
                 trigger: 'axis',
@@ -454,18 +392,18 @@
                     valueAnimation: true,
                     barWidth: 20,
                     //Y轴数字显示部分
-                    label: {
-                        normal: {
-                            show: true,
-                            position: "inside",
-                            valueAnimation: true,
-                            offset: [5, -2],
-                            textStyle: {
-                                color: "#FFFFFF",
-                                fontSize: 10,
-                            },
-                        },
-                    },
+                    // label: {
+                    //     normal: {
+                    //         show: true,
+                    //         position: "inside",
+                    //         valueAnimation: true,
+                    //         offset: [5, -2],
+                    //         textStyle: {
+                    //             color: "#FFFFFF",
+                    //             fontSize: 10,
+                    //         },
+                    //     },
+                    // },
                     itemStyle: {
                         emphasis: {
                             shadowBlur: '20',
