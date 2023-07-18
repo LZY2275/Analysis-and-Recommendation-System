@@ -4,6 +4,7 @@ import com.example.analysisandrecommendationsystem.dao.SchoolDao;
 import com.example.analysisandrecommendationsystem.dao.impl.SchoolDaoImpl;
 import com.example.analysisandrecommendationsystem.entity.CollegeApplicationItem;
 import com.example.analysisandrecommendationsystem.entity.EnrollmentInfo;
+import com.example.analysisandrecommendationsystem.entity.Hotspot;
 import com.example.analysisandrecommendationsystem.entity.School;
 import com.example.analysisandrecommendationsystem.service.SchoolService;
 
@@ -65,5 +66,10 @@ public class SchoolServiceImpl implements SchoolService {
     @Override
     public void insertSchool(String name, String rank, String type, String heat, String telephone, String introduction, float em, float go, float en, float se, String location, String logo) {
         schoolDao.insertSchool(name,rank,type,heat,telephone,introduction,em,go,en,se,location,logo);
+    }
+
+    @Override
+    public List<Hotspot> getHotSpotList() {
+        return schoolDao.getHotSpotList();
     }
 }

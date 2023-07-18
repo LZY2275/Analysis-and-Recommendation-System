@@ -1,5 +1,6 @@
 package com.example.analysisandrecommendationsystem.controller.school;
 
+import com.example.analysisandrecommendationsystem.entity.Hotspot;
 import com.example.analysisandrecommendationsystem.entity.School;
 import com.example.analysisandrecommendationsystem.service.SchoolService;
 import com.example.analysisandrecommendationsystem.service.impl.SchoolServiceImpl;
@@ -21,12 +22,16 @@ public class GetSchoolInfoServlet extends HttpServlet {
         SchoolService service = new SchoolServiceImpl();
         School school = new School();
         List<String> majorlist = new ArrayList<>();
+        List<Hotspot> hotspotList = new ArrayList<>();
         school = service.getSchoolInfo(name);
         majorlist = service.getSchoolMajorlist(name);
-        System.out.println(school.getName());
-        System.out.println(majorlist);
+        System.out.println(1);
+        hotspotList = service.getHotSpotList();
+        System.out.println(2);
         request.getSession().setAttribute("school",school);
         request.getSession().setAttribute("majorlist",majorlist);
+        request.getSession().setAttribute("hotspotList",hotspotList);
+        System.out.println(hotspotList.get(0).getName());
         response.sendRedirect("/jsp/universityinfo.jsp");
     }
 }
