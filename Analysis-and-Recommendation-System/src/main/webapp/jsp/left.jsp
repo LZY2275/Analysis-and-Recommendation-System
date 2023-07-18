@@ -53,7 +53,7 @@
                 <div style="display: none" id="list985">
                     <c:forEach items="${list985}" var="item985">
                         <div id="${item985}" >
-                            <a href="#">${item985}</a>
+                            <a href="/getschoolInfo?name=${item985}" target="mainFrame">${item985}</a>
                         </div>
                     </c:forEach>
                 </div>
@@ -64,9 +64,9 @@
                 <!--此处显示211大学列表-->
                 <div style="display: none" id="list211">
                     <c:forEach items="${list211}" var="item211">
-                        <a id="${item211}" href="#">
-                            <a href="#">${item211}</a>
-                        </a>
+                        <div id="${item211}" href="#">
+                            <a href="/getschoolInfo?name=${item211}" target="mainFrame">${item211}</a>
+                        </div>
 
                     </c:forEach>
                 </div>
@@ -253,7 +253,8 @@
                 var div = document.createElement("div");
                 a.textContent = item;
                 //div的name属性为大学的名字
-                a.setAttribute("href","#")
+                a.setAttribute("href","/getschoolInfo?name="+item)
+                a.setAttribute("target","mainFrame.subFrame")
                 div.appendChild(a);
                 container.appendChild(div);
             }
@@ -279,8 +280,6 @@
         parentDiv.style.height = totalHeight + "px";
     }
 
-    //只有登录的为用户，才会使用一下的代码
-    <c:if test="${!isadmin}">
     function display985(){
 
         showlist985=!showlist985;
@@ -315,7 +314,6 @@
         calcParentDivHeight("parentDiv");
     }
 
-    </c:if>
 
 </script>
 
