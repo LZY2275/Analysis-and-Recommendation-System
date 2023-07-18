@@ -23,6 +23,7 @@ public class GetSchoolByForm extends HttpServlet {
         int score = Integer.parseInt(scoreString);
         SchoolService service = new SchoolServiceImpl();
         List<CollegeApplicationItem> list = service.getSchoolByForm(province, type, score);
+        System.out.println(list);
         if(!list.isEmpty()){
             request.setAttribute("applicationitem",list);
 //            重定向到某个方法或者页面
