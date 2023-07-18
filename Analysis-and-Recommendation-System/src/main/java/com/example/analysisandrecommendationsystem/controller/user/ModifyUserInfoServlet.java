@@ -33,7 +33,7 @@ public class ModifyUserInfoServlet extends HttpServlet {
         String fileName = UUID.randomUUID().toString() + "-" + avatarPart.getSubmittedFileName();
 
         // 指定保存路径
-        String uploadDir = request.getServletContext().getRealPath("/upload/");
+        String uploadDir = request.getServletContext().getRealPath("../upload/");
 
 
         // 保存文件
@@ -67,8 +67,7 @@ public class ModifyUserInfoServlet extends HttpServlet {
         user = userService.login(username,password);
         request.getSession().setAttribute("user", user);
 
-//       重定向到某个方法
-//       request.getRequestDispatcher("/list").forward(request,response);
+        response.sendRedirect("/jsp/my.jsp");
     }
 
 }

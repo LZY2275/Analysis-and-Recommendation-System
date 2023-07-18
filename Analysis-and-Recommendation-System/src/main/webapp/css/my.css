@@ -48,14 +48,14 @@
 
 .info-item select,/*点击右端箭头之后显示的输入框或者下拉框*/
 .info-item input {
-    height: 60%;
-    width: 15%; /* 调整输入框宽度 */
-    padding: 5px; /* 添加一些内边距 */
+    /*height: 60%;*/
+    /*width: 20%;*/
+    /* padding: 5px; */
     color: gray;
-    font-size: 15px; /* 调整字体大小 */
+    /*font-size: 15px;*/
     background-color: rgba(255, 255, 255, 0);
-    margin-left: auto; /* 将输入框靠右对齐 */
-    margin-right: 10px;
+    margin-left: auto;
+    /*margin-right: 10px;*/
 }
 
 /*被隐藏的确认和取消按钮*/

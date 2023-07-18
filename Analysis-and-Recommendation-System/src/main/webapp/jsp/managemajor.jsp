@@ -41,7 +41,7 @@
 </style>
 <body>
 <button class="btn" style="background-color: #3c8dd8;    width: 60px;
-    float: right;"><a href="" style="text-decoration: none;color: white">添加</a></button>
+    float: right;"><a href="/jsp/addnewmajor.jsp" style="text-decoration: none;color: white">添加</a></button>
 <div style="width:100%;">
     <table>
         <thead>
@@ -51,13 +51,14 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>专业1</td>
-            <td>
-                <button class="btn" style="background-color: #45a049"><a href="" style="text-decoration: none; color: white;">编辑</a></button>
-                <button class="btn" style="background-color: red"><a href="" style="text-decoration: none; color: white;">删除</a></button>
-            </td>
-        </tr>
+        <c:forEach items="${majorList}" var="item">
+            <tr>
+                <td>${item.major}</td>
+                <td>
+                    <button class="btn" style="background-color: red"><a href="/deletemajor?major=${item.major}" style="text-decoration: none; color: white;">删除</a></button>
+                </td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>
