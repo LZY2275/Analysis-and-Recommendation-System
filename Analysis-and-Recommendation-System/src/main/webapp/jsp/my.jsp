@@ -36,7 +36,8 @@
         <form action="/modifyuserinfo" method="post" enctype="multipart/form-data">
             <div class="info-item">
                 <label for="avatar">头像:</label>
-                <input type="file" id="avatar" name="avatar" accept="image/*" onchange="previewAvatar(event)" />
+                <input type="file" id="avatar" name="avatar" accept="image/*" onchange="previewAvatar(event)" value="${user.userimgurl}"/>
+<%--                <input id="default-value" type="hidden" name="avatar" value="${user.userimgurl}">--%>
                 <%-- 装头像图片的容器，使图片显示为圆形 --%>
                 <div id="avatarImageDiv" style="margin-left: auto; margin-right: 10px; border-radius: 50%; width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
                     <%-- 后端提供给图片或者图片的url --%>

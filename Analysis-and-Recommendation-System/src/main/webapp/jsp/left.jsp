@@ -98,7 +98,7 @@
 
     <!--管理员登录显示的左侧导航栏-->
     <c:if test="${isadmin}">
-        <a href="/jsp/usermanage.jsp" target="mainFrame">
+        <a href="/userlist" target="mainFrame">
             <div class="menu-no-child menu-item">
                 <img class="image" src="https://i.postimg.cc/VNF7Y0CB/photo.png" width="15px" height="15px">
                 用户管理
