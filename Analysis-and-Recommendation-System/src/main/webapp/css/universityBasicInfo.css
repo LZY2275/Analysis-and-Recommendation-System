@@ -1,0 +1,46 @@
+body {
+    overflow-y: auto; /* 仅在需要时显示垂直滚动条 */
+    overflow-x: hidden; /* 隐藏水平滚动条 */
+}
+
+.container {
+    position: relative;
+    height: 120%;
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.block {
+    position: relative;
+    width: 100%;
+    height: 24%;
+    margin-bottom: 1%;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.block img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.block label {
+    position: absolute;/*绝对定位保证了可以浮于图片显示*/
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'taiekaishu';
+    font-size: 24px; /* 调整文字大小，根据需要进行调整 */
+    color: white; /* 文字颜色，根据需要进行调整 */
+    font-weight: bold; /* 文字加粗，根据需要进行调整 */
+}
+
+@font-face {
+    font-family: 'taiekaishu';
+    src: url(../font/taiekaishu.ttf);
+}
+
+.content {
+    padding: 20px;
+}
