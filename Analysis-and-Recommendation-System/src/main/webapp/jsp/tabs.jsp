@@ -16,9 +16,9 @@
   <div class="tab active" onclick="showContent(1)" id="tab1"><a href="/getschoollist" target="content" style="text-decoration: none;color:white;">学校信息库</a></div>
   <div class="tab" onclick="showContent(2)" id="tab2"><a href="/geolist" target="content" style="text-decoration: none;color:white;">地理信息库</a></div>
   <div class="tab" onclick="showContent(3)" id="tab3"><a href="/enrolllist" target="content" style="text-decoration: none;color:white;">招生信息库</a></div>
-  <div class="tab" onclick="showContent(4)" id="tab4"><a href="managemajor.jsp" target="content" style="text-decoration: none;color:white;">专业信息库</a></div>
-  <div class="tab" onclick="showContent(5)" id="tab5"><a href="managemajorsch.jsp" target="content" style="text-decoration: none;color:white;">专业分布库</a></div>
-  <div class="tab" onclick="showContent(6)" id="tab6"><a href="manageheatword.jsp" target="content" style="text-decoration: none;color:white;">热词信息表</a></div>
+  <div class="tab" onclick="showContent(4)" id="tab4"><a href="/majorlist" target="content" style="text-decoration: none;color:white;">专业信息库</a></div>
+  <div class="tab" onclick="showContent(5)" id="tab5"><a href="/majorschlist" target="content" style="text-decoration: none;color:white;">专业分布库</a></div>
+  <div class="tab" onclick="showContent(6)" id="tab6"><a href="/hotspotlist" target="content" style="text-decoration: none;color:white;">热词信息表</a></div>
 </div>
 </body>
 <style>

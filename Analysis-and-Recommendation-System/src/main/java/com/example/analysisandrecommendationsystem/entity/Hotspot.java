@@ -3,6 +3,15 @@ package com.example.analysisandrecommendationsystem.entity;
 public class Hotspot {
     private String word;
     private float heatRatio;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public float getHeatRatio() {
         return heatRatio;

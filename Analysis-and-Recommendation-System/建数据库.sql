@@ -79,7 +79,7 @@ create table Hotspot
     `name`    varchar(20) not null,
     word      varchar(50) not null,
     heatRatio float(2)    not null,
-    primary key (word, name, heatRatio),
+    primary key (word, name),
     foreign key (name) references School (name)
 );
 

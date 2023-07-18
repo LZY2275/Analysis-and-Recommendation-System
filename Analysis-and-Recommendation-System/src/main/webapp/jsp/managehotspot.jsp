@@ -41,7 +41,7 @@
 </style>
 <body>
 <button class="btn" style="background-color: #3c8dd8;    width: 60px;
-    float: right;"><a href="" style="text-decoration: none;color: white">添加</a></button>
+    float: right;"><a href="/jsp/addnewhotspot.jsp" style="text-decoration: none;color: white">添加</a></button>
 <div style="width:100%;">
     <table>
         <thead>
@@ -53,15 +53,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>学校1</td>
-            <td>热词1</td>
-            <td>比例1</td>
-            <td>
-                <button class="btn" style="background-color: #45a049"><a href="" style="text-decoration: none; color: white;">编辑</a></button>
-                <button class="btn" style="background-color: red"><a href="" style="text-decoration: none; color: white;">删除</a></button>
-            </td>
-        </tr>
+        <c:forEach items="${hotspotList}" var="item">
+            <tr>
+                <td>${item.name}</td>
+                <td>${item.word}</td>
+                <td>${item.heatRatio}</td>
+                <td>
+                    <button class="btn" style="background-color: #45a049"><a href="/gethotspotinfo?name=${item.name}&word=${item.word}" style="text-decoration: none; color: white;">编辑</a></button>
+                    <button class="btn" style="background-color: red"><a href="/deletehotspot?name=${item.name}&word=${item.word}" style="text-decoration: none; color: white;">删除</a></button>
+                </td>
+            </tr>
+        </c:forEach>
+
         </tbody>
     </table>
 </div>
