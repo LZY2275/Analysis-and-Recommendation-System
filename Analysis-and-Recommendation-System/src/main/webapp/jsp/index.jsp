@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
   <meta charset="utf-8">
   <title>智慧高校大数据</title>
 </head>
