@@ -1,31 +1,60 @@
+div{
+    display:inline-block
+}
+
+*{		/* CSS Reset */
+    margin : 0;
+    padding : 0;
+}
+
 .main{
     width: 1000px;
     height: 600px;
-    background-color: skyblue;
     /*position: absolute;*/
     left: 0;
     top: 0;
     /*transform: translate(-50%, -50%);*/
 }
 
-.right{
-    width: 280px;
-    height: 280px;
-    background-color: rgba(0,10,123,0.8);
-    position:absolute;
-    right: 0;
-    top: 2%;
-    border: 2px dotted rgba(84,188,189,100);
+.left{
+    height: 100%;
+    width: 320px;
+    position: absolute;
+    background-color: rgba(159,215,244,0.8);
+    left: 0;
+    top: 0;
+    padding: 5px;
 }
 
-.right2{
-    width:280px;
-    height: 280px;
-    background-color: rgba(0,10,123,0.8);
-    position:absolute;
+.left1{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 0;
     right: 0;
-    top: 55%;
-    border: 2px dotted rgba(84,188,189,100);
+    top: 10%;
+    margin: auto;
+}
+
+.left2{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10%;
+    margin: auto;
+}
+
+.text{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 5%;
+    margin: auto;
+    font-size: 30px;
+    font-family: taiekaishu;
+    text-align: center;
 }
 
 @font-face {
