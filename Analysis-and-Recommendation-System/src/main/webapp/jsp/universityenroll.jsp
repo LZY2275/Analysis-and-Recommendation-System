@@ -218,9 +218,9 @@
 
         p.style.display = 'block';
 
-        var data1 = parseInt(Math.random()*(700-560+1)+560,10);
-        var data2 = parseInt(Math.random()*(700-560+1)+560,10);
-        var data3 = parseInt(Math.random()*(700-560+1)+560,10);
+        var data1 = parseInt(Math.random()*(300-50+1)+50,10);
+        var data2 = parseInt(Math.random()*(300-50+1)+50,10);
+        var data3 = parseInt(Math.random()*(300-50+1)+50,10);
         var outdata = [data1, data2, data3];
 
         option = {
@@ -271,9 +271,9 @@
         var myChart2 = echarts.init(chartDom);
         var option;
 
-        var data1 = parseInt(Math.random()*(300-50+1)+50,10);
-        var data2 = parseInt(Math.random()*(300-50+1)+50,10);
-        var data3 = parseInt(Math.random()*(300-50+1)+50,10);
+        var data1 = parseInt(Math.random()*(700-560+1)+560,10);
+        var data2 = parseInt(Math.random()*(700-560+1)+560,10);
+        var data3 = parseInt(Math.random()*(700-560+1)+560,10);
         var outdata = [data1, data2, data3];
 
         option = {
