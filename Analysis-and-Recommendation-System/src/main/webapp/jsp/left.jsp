@@ -158,6 +158,7 @@
             /** 再次点击已打开的菜单，关闭此菜单 */
             if (currentDisplayIndex === i) {
                 items[currentDisplayIndex].classList.toggle("ul-active");
+                // items[currentDisplayIndex].setAttribute("style","height=0;");
                 icons[currentDisplayIndex].classList.toggle("reverse-icon");
                 menuItems[currentDisplayIndex].classList.toggle('bg-color');
                 currentDisplayIndex = -1
@@ -167,16 +168,19 @@
             /** 关闭前一个被打开的菜单 打开当前要打开的菜单 */
             if (currentDisplayIndex != -1) {
                 items[currentDisplayIndex].classList.toggle("ul-active");
+                // items[currentDisplayIndex].setAttribute("style","height=0;");
                 icons[currentDisplayIndex].classList.toggle("reverse-icon");
                 menuItems[currentDisplayIndex].classList.toggle('bg-color');
 
                 items[i].classList.toggle("ul-active");
+                // items[i].setAttribute("style","height=0;");
                 icons[i].classList.toggle("reverse-icon");
                 menuItems[i].classList.toggle('bg-color');
             }
             /** 没有任何菜单被打开时 打开新菜单 */
             else{
                 items[i].classList.toggle("ul-active");
+                // items[i].setAttribute("style","height=0;");
                 icons[i].classList.toggle("reverse-icon");
                 menuItems[i].classList.toggle('bg-color');
             }
@@ -277,7 +281,10 @@
         if (totalHeight>=450){
             totalHeight=450;
         }
-        parentDiv.style.height = totalHeight + "px";
+        var stylesheet = document.styleSheets[0]
+        var rule = stylesheet.cssRules[17]
+        rule.style.height = totalHeight+"px"
+        // parentDiv.style.height = totalHeight + "px";
     }
 
     function display985(){

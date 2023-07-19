@@ -167,7 +167,7 @@
                         <input type="file" id="avatar" name="avatar" accept="image/*" onchange="previewAvatar(event)" class="custom-select" required/>
                     </td>
                     <td>
-                        <img id="avatarPreview" src="${user.userimgurl}" style="width: 70px; height: 70px;">
+                        <img id="avatarPreview" src="${user.userimgurl}" style="width: 70px; height: 70px; border-radius: 50px">
                     </td>
                 </tr>
             </table>

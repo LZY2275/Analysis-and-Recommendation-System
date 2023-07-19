@@ -3,7 +3,8 @@
 }
 * {
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: auto;
+    overflow-x: hidden;
 }
 
 a:link {
@@ -91,7 +92,7 @@ a:active {
     height: 0px;
     margin: 0px;
     padding: 0px;
-    overflow: hidden;
+    /*overflow: hidden;*/
     transition: height 0.3s ease-out 0.1s;
 }
 ul {
@@ -144,10 +145,7 @@ li {
     height: 15px;
 }
 
-/* 将滚动条滑块透明 */
-::-webkit-scrollbar-thumb {
-    background-color: transparent;
-}
+
 
 a {
     text-decoration: none; /* 清除下划线 */

@@ -21,6 +21,7 @@ public class GetPassword extends HttpServlet {
         String birthdayString = request.getParameter("birthday");
         String sexString = request.getParameter("sex");
         String sex;
+        System.out.println(sexString);
         if(sexString.equals("male")){
             sex = "男";
         }else {
@@ -37,6 +38,7 @@ public class GetPassword extends HttpServlet {
         }
 
         UserService service = new UserServiceImpl();
+        System.out.println(name+" "+birthday+" "+sex);
         String password = service.getPassword(name,birthday,sex);
 //        System.out.println(password);
 
@@ -45,6 +47,6 @@ public class GetPassword extends HttpServlet {
         }else {
             request.setAttribute("password","未找到，请检查输入信息！");
         }
-        request.getRequestDispatcher("/jsp/forgotPassword.jsp").forward(request,response);
+        request.getRequestDispatcher("/jsp/forgotpassword.jsp").forward(request,response);
     }
 }

@@ -10,17 +10,48 @@
 <head>
     <title>招生信息</title>
     <link href="../css/universityenroll.css" type="text/css" rel="stylesheet" />
+    <link href="../css/universityright.css" type="text/css" rel="stylesheet" />
 </head>
+<style>
+    .container{
+        padding: 15px;
+    }
+</style>
 <body>
-<div id="screen" class="main"></div>
+<div style="overflow: hidden;display: flex">
+    <div style="width: calc(100% - 30px)" id="infocontainer">
+        <div class="container">
+            <div id="screen" class="main"></div>
 
-<div class="left" id="left" style="display: none">
-    <%--近三年招生人数--%>
-<%--    <div class="text">四川大学</div>--%>
-    <div class="left1" id="left1"></div>
-    <%--近三年分数线--%>
-    <div class="left2" id="left2"></div>
+            <div class="left" id="left" style="display: none">
+                <%--近三年招生人数--%>
+                <%--    <div class="text">四川大学</div>--%>
+                <div class="left1" id="left1"></div>
+                <%--近三年分数线--%>
+                <div class="left2" id="left2"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div style="float:right;width: 30px;    position: fixed;right: 0;" id="tabs">
+        <div style="width: 30px;height: 100%">
+
+            <%--导航栏主体--%>
+            <a style="text-decoration: none" href="universityinfo.jsp"><div class="vertical-text flex3 tabs" >
+                <span>基本信息</span>
+            </div></a>
+            <a style="text-decoration: none" href="universityenroll.jsp"><div class="vertical-text flex3 tabs" style="margin-top: 0.3vh">
+                <span>招生信息</span>
+            </div></a>
+            <a style="text-decoration: none" href="universityanalysis.jsp"><div class="vertical-text flex3 tabs" style="margin-top: 0.3vh">
+                <span>对比分析</span>
+            </div></a>
+        </div>
+    </div>
+
 </div>
+
 
 <script type="text/javascript" src="../js/echarts.js"></script>
 <script type="text/javascript" src="../js/echarts.min.js"></script>
@@ -303,5 +334,27 @@
     }
 </script>
 
+<script>
+    // 获取当前页面的高度
+    var pageHeight = document.documentElement.clientHeight;
+
+    // 获取要设置高度的div元素
+    var tabElement = document.getElementById("tabs");
+    var infoElement = document.getElementById("infocontainer");
+
+    // 设置初始高度
+    tabElement.style.height = pageHeight+ "px";
+    infoElement.style.height = pageHeight+ "px";
+
+    // 监听窗口大小变化事件
+    window.addEventListener("resize", function() {
+        // 获取更新后的页面高度
+        var updatedPageHeight = document.documentElement.clientHeight;
+
+        // 更新div的高度
+        tabElement.style.height = updatedPageHeight+ "px";
+        infoElement.style.height = updatedPageHeight+ "px";
+    });
+</script>
 </body>
 </html>

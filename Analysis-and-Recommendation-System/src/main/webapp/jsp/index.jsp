@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>智慧高校大数据</title>
 </head>
-<body style="background-color: #232736">
+<body style="background-color: #232736;">
 
 <div>
   <iframe name="topFrame" src="/jsp/top.jsp" borders="NO" width=100% height="110px" style="border: 1px none;"></iframe>
