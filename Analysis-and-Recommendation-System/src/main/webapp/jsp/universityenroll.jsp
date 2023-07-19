@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.Random" %><%--
   Created by IntelliJ IDEA.
   User: DELL
   Date: 2023/7/18
@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>招生信息</title>
     <link href="../css/universityenroll.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
@@ -16,7 +16,7 @@
 
 <div class="left" id="left" style="display: none">
     <%--近三年招生人数--%>
-    <div class="text">四川大学</div>
+<%--    <div class="text">四川大学</div>--%>
     <div class="left1" id="left1"></div>
     <%--近三年分数线--%>
     <div class="left2" id="left2"></div>
@@ -187,9 +187,14 @@
 
         p.style.display = 'block';
 
+        var data1 = parseInt(Math.random()*(700-560+1)+560,10);
+        var data2 = parseInt(Math.random()*(700-560+1)+560,10);
+        var data3 = parseInt(Math.random()*(700-560+1)+560,10);
+        var outdata = [data1, data2, data3];
+
         option = {
             title: {
-                text: '近三年招生人数',
+                text: "近三年招生人数",
                 left: 'center',
                 textStyle: {
                     color: '#000000',
@@ -212,7 +217,7 @@
             },
             series: [
                 {
-                    data: [63, 128, 159],
+                    data: outdata,
                     type: 'line',
                     areaStyle: {
                         color: 'rgba(136,154,215,0.6)'
@@ -234,6 +239,11 @@
         var chartDom = document.getElementById('left2');
         var myChart2 = echarts.init(chartDom);
         var option;
+
+        var data1 = parseInt(Math.random()*(300-50+1)+50,10);
+        var data2 = parseInt(Math.random()*(300-50+1)+50,10);
+        var data3 = parseInt(Math.random()*(300-50+1)+50,10);
+        var outdata = [data1, data2, data3];
 
         option = {
             title: {
@@ -259,7 +269,7 @@
             },
             series: [
                 {
-                    data: [640, 630, 634],
+                    data: outdata,
                     type: 'line'
                 }
             ]
@@ -279,19 +289,19 @@
     });
 </script>
 
-    <script>
-        window.onload=function(){
-            var a = document.getElementById("screen");//获取div块对象
-            var Height=document.documentElement.clientHeight;//取得浏览器页面可视区域的宽度
-            var Width=document.documentElement.clientWidth;//取得浏览器页面可视区域的宽度
-            var gao1 = a.offsetHeight;//获取div块的高度值
-            var gao2 = a.offsetWidth;//获取div块的宽度值
-            var Sgao1= (Height - gao1)/2+"px";
-            var Sgao2= (Width - gao2)/2+"px";
-            a.style.top=Sgao1;
-            a.style.left=Sgao2;
-        }
-    </script>
+<script>
+    window.onload=function(){
+        var a = document.getElementById("screen");//获取div块对象
+        var Height=document.documentElement.clientHeight;//取得浏览器页面可视区域的宽度
+        var Width=document.documentElement.clientWidth;//取得浏览器页面可视区域的宽度
+        var gao1 = a.offsetHeight;//获取div块的高度值
+        var gao2 = a.offsetWidth;//获取div块的宽度值
+        var Sgao1= (Height - gao1)/2+"px";
+        var Sgao2= (Width - gao2)/2+"px";
+        a.style.top=Sgao1;
+        a.style.left=Sgao2;
+    }
+</script>
 
 </body>
 </html>
