@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 22751
@@ -87,17 +88,17 @@
                 <td>处理方式</td>
                 <td>提交处理</td>
             </tr>
-            <%--            <c:forEach>--%>
-            <tr class="tablebody">
-                <form>
-                    <td><img src="../images/反馈.svg" width="30px" height="30px"></td>
-                    <td><input type="text" value="username" name="username" readonly class="custom-select"></td>
-                    <td><input type="text" value="feedback" name="feedback" readonly class="custom-select"></td>
-                    <td><input type="text" required name="method" class="custom-select"></td>
-                    <td><a href="" style="text-decoration: none"><button class="submit-button">提交处理</button></a></td>
-                </form>
-            </tr>
-            <%--            </c:forEach>--%>
+            <c:forEach items="${unsolvedList}" var="item">
+                <tr class="tablebody">
+                    <form action="/updatefeedback" method="post">
+                        <td><img src="../images/反馈.svg" width="30px" height="30px"></td>
+                        <td><input type="text" value="${item.username}" name="username" readonly class="custom-select"></td>
+                        <td><input type="text" value="${item.feedback}" name="feedback" readonly class="custom-select"></td>
+                        <td><input type="text" required name="method" class="custom-select"></td>
+                        <td><input type="submit" class="submit-button" value="提交处理"></td>
+                    </form>
+                </tr>
+            </c:forEach>
         </table>
     </div>
 

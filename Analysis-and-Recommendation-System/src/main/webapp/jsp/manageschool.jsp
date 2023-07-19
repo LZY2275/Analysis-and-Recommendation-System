@@ -62,6 +62,12 @@
     .container{
         padding: 40px 40px 0  40px
     }
+    th{
+        padding: 8px;
+    }
+    td{
+        padding: 8px;
+    }
 </style>
 <body>
 <div class="container">

@@ -14,6 +14,7 @@ import java.util.List;
 public class FeedbackDaoImpl implements FeedbackDao {
     private final static String SOLIST="select * from feedback where status = '已解决'";
     private final static String UNLIST="select * from feedback where status = '未解决'";
+    private final static String UPDATE = "update feedback set method = ? ,status = '已解决' where username = ? and feedback = ?";
     @Override
     public List<Feedback> getSolvedList() {
         Connection connection = null;
@@ -30,7 +31,6 @@ public class FeedbackDaoImpl implements FeedbackDao {
                 feedback.setFeedback(resultSet.getString("feedback"));
                 feedback.setMethod(resultSet.getString("method"));
                 feedback.setStatus(resultSet.getString("status"));
-
                 list.add(feedback);
             }
         }catch (Exception e){
@@ -66,5 +66,25 @@ public class FeedbackDaoImpl implements FeedbackDao {
             C3P0Util.release(resultSet,preparedStatement,connection);
         }
         return list;
+    }
+
+    @Override
+    public void updateFeedback(String username, String feedback, String method) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = C3P0Util.getConnection();
+            preparedStatement = connection.prepareStatement(UPDATE);
+            preparedStatement.setString(1,method);
+            preparedStatement.setString(2,username);
+            preparedStatement.setString(3,feedback);
+
+            preparedStatement.execute();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            C3P0Util.release(null,preparedStatement,connection);
+        }
+        return;
     }
 }

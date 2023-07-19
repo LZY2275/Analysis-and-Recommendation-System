@@ -48,6 +48,10 @@
     .tablebody:hover{
         border-left: 2px solid #714146;
     }
+    .emit{
+        font-size: small;
+        color:#5e6c7e ;
+    }
 </style>
 <body>
 <div class="container">
@@ -60,17 +64,17 @@
             <tr class="tablehead">
                 <td style="width: 40px"><img src="../images/菜单.svg" width="30px" height="30px"></td>
                 <td>用户昵称</td>
-                <td>反馈内容</td>
-                <td>处理方式</td>
+                <td >反馈内容</td>
+                <td >处理方式</td>
             </tr>
-<%--            <c:forEach>--%>
+            <c:forEach items="${solvedList}" var="item">
                 <tr class="tablebody">
                     <td><img src="../images/反馈.svg" width="30px" height="30px"></td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
+                    <td>${item.username}</td>
+                    <td class="emit">${item.feedback}</td>
+                    <td class="emit">${item.method}</td>
                 </tr>
-<%--            </c:forEach>--%>
+            </c:forEach>
         </table>
     </div>
 
