@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: 22751
@@ -5,7 +6,7 @@
   Time: 18:33
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -29,6 +30,14 @@
   <script>
     let myEcharts = echarts.init(document.getElementById('screen'));
     var option  = {
+      title: {
+        text: "热门关注",
+        left: 'center',
+        textStyle: {
+          color: '#FFFFFF',
+          fontFamily: 'taiekaishu'
+        },
+      },
       backgroundColor: 'transparent',
       tooltip: {
         show: true
@@ -77,34 +86,13 @@
         },
         //data属性中的value值却大，权重就却大，展示字体就却大
         data: [
-          {name: 'Farrah',value: 366},
-          {name: "汽车",value: 900},
-          {name: "视频",value: 206},
-          {name: "1",value: 500},
-          {name: "2",value: 333},
-          {name: "3",value: 306},
-          {name: "4",value: 406},
-          {name: "5",value: 6106},
-          {name: "6",value: 5006},
-          {name: "7",value: 706},
-          {name: "8",value: 906},
-          {name: "9",value: 806},
-          {name: "10",value: 6086},
-          {name: "11",value: 1606},
-          {name: "12",value: 6076},
-          {name: "13",value: 7606},
-          {name: "14",value: 3606},
-          {name: "15",value: 1606},
-          {name: "16",value: 4606},
-          {name: "17",value: 5606},
-          {name: "18",value: 6606},
-          {name: "19",value: 7606},
-          {name: "20",value: 8606},
-          {name: "21",value: 9606},
+          <c:forEach items="${hotspotList}" var="item">
+          {name: "${item.word}", value: ${item.heatRatio}},
+          </c:forEach>
         ]
       }]
 
-    }
+    };
     myEcharts.setOption(option);
 
     //屏幕自适应
@@ -122,7 +110,7 @@
 
     option = {
       title: {
-        text: '四川大学就业数据',
+        text: '${school.name}就业数据',
         left: 'center',
         textStyle: {
           color: '#000000',
@@ -167,8 +155,8 @@
             show: false
           },
           data: [
-            { value: 70, name: '就业率' },
-            { value: 30, name: '未就业率' }
+            { value: ${school.employmentRatio}, name: '就业率' },
+            { value: ${100-school.employmentRatio}, name: '未就业率' }
           ]
         }
       ]
@@ -378,7 +366,10 @@
 
   <div style="overflow:hidden;display: flex">
     <div style="width: calc(100% - 30px)" id="infocontainer">
-      <div class="container"></div>
+      <div class="container">
+
+
+      </div>
     </div>
     <div style="float:right;width: 30px;    position: fixed;right: 0;" id="tabs">
       <div style="width: 30px;height: 100%">
