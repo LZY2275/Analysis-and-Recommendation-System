@@ -8,4 +8,6 @@ public interface FeedbackDao {
     List<Feedback> getSolvedList();
 
     List<Feedback> getUnsolvedList();
+
+    void updateFeedback(String username, String feedback, String method);
 }

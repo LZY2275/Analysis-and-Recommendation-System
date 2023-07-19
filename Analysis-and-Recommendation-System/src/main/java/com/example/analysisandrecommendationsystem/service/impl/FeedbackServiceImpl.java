@@ -18,4 +18,9 @@ public class FeedbackServiceImpl implements FeedbackService {
     public List<Feedback> getUnsolvedList() {
         return feedbackDao.getUnsolvedList();
     }
+
+    @Override
+    public void updateFeedback(String username, String feedback, String method) {
+        feedbackDao.updateFeedback(username,feedback,method);
+    }
 }
