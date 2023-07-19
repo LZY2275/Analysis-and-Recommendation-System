@@ -18,6 +18,9 @@ import java.util.List;
 public class GetSchoolInfoServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getSession().removeAttribute("school");
+        request.getSession().removeAttribute("majorList");
+        request.getSession().removeAttribute("hotspotList");
         String name = request.getParameter("name");
         SchoolService service = new SchoolServiceImpl();
         School school = new School();
@@ -25,13 +28,11 @@ public class GetSchoolInfoServlet extends HttpServlet {
         List<Hotspot> hotspotList = new ArrayList<>();
         school = service.getSchoolInfo(name);
         majorlist = service.getSchoolMajorlist(name);
-        System.out.println(1);
-        hotspotList = service.getHotSpotList();
-        System.out.println(2);
+        hotspotList = service.getHotSpotList(name);
+        System.out.println("gp"+school.getGoAbroadRatio());
         request.getSession().setAttribute("school",school);
         request.getSession().setAttribute("majorlist",majorlist);
         request.getSession().setAttribute("hotspotList",hotspotList);
-        System.out.println(hotspotList.get(0).getName());
         response.sendRedirect("/jsp/universityinfo.jsp");
     }
 }

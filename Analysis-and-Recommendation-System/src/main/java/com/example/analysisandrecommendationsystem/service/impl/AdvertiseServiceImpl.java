@@ -29,4 +29,9 @@ public class AdvertiseServiceImpl implements AdvertiseService {
     public void deleteAdInfo(String title, String name) {
         advertiseDao.deleteAdInfo(title, name);
     }
+
+    @Override
+    public void insertAd(String name, String title, String contenttext) {
+        advertiseDao.insertAd(name,title,contenttext);
+    }
 }

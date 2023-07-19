@@ -20,6 +20,7 @@
   }
 </style>
 <body>
+
 <div style="display: flex;" class="all">
   <script type="text/javascript" src="../js/echarts.js"></script>
   <script type="text/javascript" src="../js/echarts-wordcloud.js"></script>
@@ -35,7 +36,7 @@
         left: 'center',
         textStyle: {
           color: '#FFFFFF',
-          fontFamily: 'taiekaishu'
+          fontFamily: 'taiekaishu',
         },
       },
       backgroundColor: 'transparent',
@@ -113,7 +114,7 @@
         text: '${school.name}就业数据',
         left: 'center',
         textStyle: {
-          color: '#000000',
+          color: '#FFFFFF',
           fontFamily: 'taiekaishu'
         }
       },
@@ -122,41 +123,46 @@
       },
       legend: {
         top: 'bottom',
-        left: 'center'
+        left: 'center',
+        color:'#fff'
       },
       series: [
         {
           // name: '四川大学就业指标',
           type: 'pie',
-          radius: ['40%', '70%'],
+          radius: ['60%', '70%'],
           avoidLabelOverlap: false,
           itemStyle: {
             borderRadius: 10,
             borderColor: '#fff',
-            borderWidth: 1
+            borderWidth: 0
           },
           label: {
             show: false,
-            position: 'center'
+            position: 'center',
+            color:'#fff'
           },
           emphasis: {
             label: {
               show: true,
               fontSize: 20,
-              fontWeight: 'bold'
+              fontWeight: 'bold',
+              color:'#fff'
             },
             itemStyle: {
               shadowBlur: 10,
               shadowOffsetX: 0,
-              shadowColor: 'rgba(0, 0, 0, 0.5)'
+              shadowColor: 'rgba(255, 255, 255, 0.5)'
             }
           },
           labelLine: {
             show: false
           },
           data: [
-            { value: ${school.employmentRatio}, name: '就业率' },
-            { value: ${100-school.employmentRatio}, name: '未就业率' }
+            { value: ${school.employmentRatio}, name: '就业率' ,itemStyle:{color:'#fff'}},
+            { value: ${100-school.employmentRatio}, name: '未就业率' ,itemStyle:{color:'#7dc94d'}},
+            // { value: 70, name: '就业率' },
+            // { value: 30, name: '未就业率' }
           ]
         }
       ]
@@ -179,10 +185,10 @@
 
     option = {
       title: {
-        text: '四川大学升学数据',
+        text: '${school.name}升学数据',
         left: 'center',
         textStyle: {
-          color: '#000000',
+          color: '#fff',
           fontFamily: 'taiekaishu'
         }
       },
@@ -197,35 +203,40 @@
         {
           // name: '四川大学升学指标',
           type: 'pie',
-          radius: ['40%', '70%'],
+          radius: ['60%', '70%'],
           avoidLabelOverlap: false,
           itemStyle: {
             borderRadius: 10,
             borderColor: '#fff',
-            borderWidth: 1
+            borderWidth: 0,
+            // color:['#fff','#367ef1']
           },
           label: {
             show: false,
-            position: 'center'
+            position: 'center',
+            color:'#fff'
           },
           emphasis: {
             label: {
               show: true,
               fontSize: 20,
-              fontWeight: 'bold'
+              fontWeight: 'bold',
+              color:'#fff'
             },
             itemStyle: {
               shadowBlur: 10,
               shadowOffsetX: 0,
-              shadowColor: 'rgba(0, 0, 0, 0.5)'
+              shadowColor: 'rgba(255, 255, 255, 0.5)'
             }
           },
           labelLine: {
             show: false
           },
           data: [
-            { value: 70, name: '升学率' },
-            { value: 30, name: '未升学率' }
+            { value: ${school.enrollmentRatio}, name: '升学率' ,itemStyle:{color:'#fff'}},
+            { value: 50, name: '未升学率' ,itemStyle:{color:'#367ef1'}},
+            <%--{ value: ${school.enrollmentRatio}, name: '升学率' },--%>
+            <%--{ value: ${100-school.enrollmentRatio}, name: '未升学率' }--%>
           ]
         }
       ]
@@ -248,10 +259,10 @@
 
     option = {
       title: {
-        text: '四川大学出国数据',
+        text: '${school.name}出国数据',
         left: 'center',
         textStyle: {
-          color: '#000000',
+          color: '#fff',
           fontFamily: 'taiekaishu'
         }
       },
@@ -260,41 +271,46 @@
       },
       legend: {
         top: 'bottom',
-        left: 'center'
+        left: 'center',
+        color:'#fff'
       },
       series: [
         {
           // name: '四川大学出国指标',
           type: 'pie',
-          radius: ['40%', '70%'],
+          radius: ['60%', '70%'],
           avoidLabelOverlap: false,
           itemStyle: {
             borderRadius: 10,
             borderColor: '#fff',
-            borderWidth: 1
+            borderWidth: 0
           },
           label: {
             show: false,
-            position: 'center'
+            position: 'center',
+
           },
           emphasis: {
             label: {
               show: true,
               fontSize: 20,
-              fontWeight: 'bold'
+              fontWeight: 'bold',
+              color:'#fff'
             },
             itemStyle: {
               shadowBlur: 10,
               shadowOffsetX: 0,
-              shadowColor: 'rgba(0, 0, 0, 0.5)'
+              shadowColor: 'rgba(255, 255, 255, 0.5)'
             }
           },
           labelLine: {
             show: false
           },
           data: [
-            { value: 70, name: '出国率' },
-            { value: 30, name: '未出国率' }
+            { value: ${school.goAbroadRatio}, name: '出国率' ,itemStyle:{color:'#fff'}},
+            { value: ${100-school.goAbroadRatio}, name: '未出国率' ,itemStyle:{color:'#e7a84a'}}
+            // { value: 30, name: '出国率' },
+            // { value: 70, name: '未出国率' }
           ]
         }
       ]
@@ -317,10 +333,10 @@
 
     option = {
       title: {
-        text: '四川大学男女比例',
+        text: '${school.name}男女比例',
         left: 'center',
         textStyle: {
-          color: '#000000',
+          color: '#fff',
           fontFamily: 'taiekaishu'
         }
       },
@@ -329,25 +345,28 @@
       },
       legend: {
         top: 'bottom',
-        left: 'center'
+        left: 'center',
+        color:'#fff'
       },
       series: [
         {
           type: 'pie',
-          radius: '50%',
+          radius: '60%',
           itemStyle: {
             borderColor: '#fff',
-            borderWidth: 1
+            borderWidth: 0
           },
           data: [
-            { value: 1, name: '男' },
-            { value: 0.7, name: '女' }
+            { value: ${school.sexRatio}, name: '男' ,itemStyle:{color:'#dc6352'}},
+            { value: ${100-school.sexRatio}, name: '女' ,itemStyle:{color:'#fff'}}
+            // { value: 1, name: '男' },
+            // { value: 0.7, name: '女' }
           ],
           emphasis: {
             itemStyle: {
               shadowBlur: 10,
               shadowOffsetX: 0,
-              shadowColor: 'rgba(0, 0, 0, 0.5)'
+              shadowColor: 'rgba(255, 255, 255, 0.5)'
             }
           }
         }
@@ -387,6 +406,7 @@
     </div>
   </div>
 </div>
+<h1 style="position: fixed;top: 40px;color: white;width: 100%;text-align: center">大学对比分析</h1>
 </body>
 <script>
   // 获取当前页面的高度

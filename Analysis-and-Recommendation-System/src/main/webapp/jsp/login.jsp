@@ -44,9 +44,14 @@
         </div>
 
         <div class="help-links">
-            <div style="width: 40px">
+<%--            <div style="width: 40px">--%>
+<%--                <input type="checkbox" id="isAdminister" name="role" value="admin">--%>
+<%--                <!--<span id="isAdministerSlider" class="toggle-slider"></span>-->--%>
+<%--                <span id="isAdministerSlider" class="toggle-slider"></span>--%>
+<%--            </div>--%>
+            <div class="toggle-switch" style="width: 40px">
                 <input type="checkbox" id="isAdminister" name="role" value="admin">
-                <!--<span id="isAdministerSlider" class="toggle-slider"></span>-->
+                <span id="isAdministerSlider" class="toggle-slider"></span>
             </div>
             <label style="display: flex; align-items: flex-start; margin-left: 0px;">管理员</label>
 

@@ -30,5 +30,5 @@ public interface SchoolDao {
 
     void insertSchool(String name, String rank, String type, String heat, String telephone, String introduction, float em, float go, float en, float se, String location, String logo);
 
-    List<Hotspot> getHotSpotList();
+    List<Hotspot> getHotSpotList(String name);
 }

@@ -11,14 +11,92 @@
 <html>
 <head>
     <title>管理用户</title>
-  <link rel="stylesheet" href="../css/manages.css">
 </head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    color: white;
+  }
+
+
+  .tablehead{
+    background-color: #323d51;
+    color: #5e6c7e;
+    height: 20px;
+    font-size: small;
+  }
+  .tablebody{
+    background-color: #283142;
+
+  }
+  .tablebody:hover{
+    border-left: 2px solid #714146;
+  }
+  .highlight{
+    font-weight: bold;
+  }
+  .emit{
+    font-size: small;
+    color:#5e6c7e ;
+  }
+  .note{
+    font-size: xx-small;
+    color: #646975;
+  }
+  .paradivide{
+    border: none;
+    margin: 10px 0;
+  }
+  .submit-button{
+    background-color: #515195;
+    color: white;
+    border-radius: 100px;
+    padding: 10px 20px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: small;
+    font-weight: bold;
+    cursor: pointer;
+    width: 80px;
+  }
+  .container{
+    padding: 40px 40px 0  40px
+  }
+  button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 3px 0;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+  }
+  th{
+    padding: 8px;
+  }
+  td{
+    padding: 8px;
+  }
+</style>
 <body>
-<button class="btn" style="background-color: #3c8dd8;    width: 60px;
-    float: right;"><a href="/jsp/addnewuser.jsp" style="text-decoration: none;color: white">添加</a></button>
+<div class="container">
+  <h1 style="color: white">用户管理</h1>
+  <hr class="paradivide">
+  <p class="note">在这里管理用户的基本信息</p>
+<button class="submit-button" style="float: right;"><a href="/jsp/addnewuser.jsp" style="text-decoration: none;color: white">添加</a></button>
 <div style="width:100%;">
   <table>
-    <thead>
+    <thead class="tablehead">
     <tr>
       <th style="width:50px;">头像</th>
       <th>用户昵称</th>
@@ -30,12 +108,12 @@
     </thead>
     <tbody>
     <c:forEach items="${userList}" var="item">
-      <tr>
-        <td><img src="${item.userimgurl}" width="50px" height="50px"></td>
+      <tr class="tablebody">
+        <td style="text-align: center"><img src="${item.userimgurl}" width="70px" height="70px" style="border-radius: 50px"></td>
         <td>${item.username}</td>
         <td>${item.password}</td>
-        <td>${item.sex}</td>
-        <td>${item.birthday}</td>
+        <td class="emit">${item.sex}</td>
+        <td class="emit">${item.birthday}</td>
         <td>
           <button class="btn" style="background-color: #45a049"><a href="/getuserinfo?username=${item.username}" style="text-decoration: none; color: white;">编辑</a></button>
           <button class="btn" style="background-color: red"><a href="/deleteuser?username=${item.username}" style="text-decoration: none; color: white;">注销</a></button>
@@ -46,5 +124,9 @@
     </tbody>
   </table>
 </div>
+</div>
+
+
+
 </body>
 </html>

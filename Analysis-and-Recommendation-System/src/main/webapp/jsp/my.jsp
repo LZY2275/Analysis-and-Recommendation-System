@@ -24,101 +24,163 @@
     <title>个人信息</title>
     <link rel="stylesheet" href="../css/my.css">
     <style>
-        body {
-            /*background-image: url('../images/数据大屏背景/bg.jpg'); !* 设置背景图片 *!*/
-            /*background-size: cover; !* 背景图片大小自适应屏幕 *!*/
-            /*background-repeat: no-repeat; !* 背景图片不重复 *!*/
-            /*height: 100vh; !* 设置body高度为屏幕高度 *!*/
-            display: flex; /* 使用弹性布局 */
-            align-items: center; /* 垂直居中对齐 */
-            justify-content: center; /* 水平居中对齐 */
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container {
+            padding: 40px;
+
+        }
+        .note{
+            font-size: xx-small;
+            color: #646975;
+        }
+        .paradivide{
+            border: none;
+            margin: 10px 0;
+        }
+        .divider{
+            border: none;
+            border-top: 1px solid #333846;
+            margin: 20px 0;
+        }
+        .formgroup td{
+            padding: 8px;
+        }
+
+        .custom-select {
+            position: relative;
+            display: inline-block;
+            background-color: #2d2f3e;
+            border-radius: 10px;
+            border: 2px solid #393d4c;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .custom-select select option {
+            background-color: #2d2f3e;
+            color: white;
+        }
+
+        .inputtitle{
+            font-size: small;
+            font-weight: bold;
+            color: white;
+        }
+        .submit-button{
+            background-color: #515195;
+            color: white;
+            border-radius: 100px;
+            padding: 10px 20px;
+            border: none;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: small;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .tablehead{
+            background-color: #323d51;
+            color: #5e6c7e;
+            height: 20px;
+            font-size: small;
+        }
+        .tablebody{
+            background-color: #283142;
+
+        }
+        .tablegruop:hover{
+            border-left: 2px solid #714146;
+        }
+        .resulttable td{
+            padding: 10px 20px;;
+        }
+        .highlight{
+            font-weight: bold;
+        }
+        .emit{
+            font-size: small;
+            color:#5e6c7e ;
+        }
+        .btn{
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin: 3px 0;
+            color: white;
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+            vertical-align: middle;
         }
     </style>
 </head>
 <body>
 <div class="container">
-
-<%--    &lt;%&ndash;    顶端装饰图片&ndash;%&gt;--%>
-<%--    <div style="width: 100%">--%>
-<%--        <img src="../images/数据大屏头部切图/titlebg8.png" style="width: 100%;object-fit: contain;">--%>
-<%--    </div>--%>
-
-    <%--    实际内容--%>
-    <div class="content">
+    <h1 style="color: white">修改个人信息</h1>
+    <hr class="paradivide">
+    <p class="note">在这里，你可以修改你的信息...</p>
+    <hr class="paradivide">
+    <div style="width: 100%">
         <form action="/modifyuserinfo" method="post" enctype="multipart/form-data">
-            <div class="info-item">
-                <label for="avatar">头像:</label>
-                <input type="file" id="avatar" name="avatar" accept="image/*" onchange="previewAvatar(event)" value="${user.userimgurl}"/>
-<%--                <input id="default-value" type="hidden" name="avatar" value="${user.userimgurl}">--%>
-                <%-- 装头像图片的容器，使图片显示为圆形 --%>
-                <div id="avatarImageDiv" style="margin-left: auto; margin-right: 10px; border-radius: 50%; width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
-                    <%-- 后端提供给图片或者图片的url --%>
-                    <img id="avatarPreview" src="${user.userimgurl}" style="width: 100%; height: 100%;">
-                </div>
-    <%--            <div style="height: 60%; width:10%;">--%>
-    <%--                <button id="confirmButtonAvatar" onclick="saveAvatar()" style="display: none; background-color: rgba(255, 255, 255, 0.5); color: white">确认</button>--%>
-    <%--                <button id="cancelButtonAvatar" onclick="cancelEditAvatar()" style="display: none; background-color: rgba(255, 255, 255, 0.5); color: white">取消</button>--%>
-    <%--                <img src="../images/箭头 右.svg" id="editButtonAvatar" onclick="selectAvatar()" style="height: 100%; width: 100%">--%>
-    <%--            </div>--%>
-            </div>
-
-            <div class="info-item">
-                <%-- 昵称不能被修改 --%>
-                <label>昵称</label>
-                <%-- 后端需要将用户名显示在id="nickName"的label上 --%>
-                <label id="nickName" class="special-label">${user.username}</label>
-    <%--            <div style="height: 60%; width: 10%;">--%>
-    <%--                <!-- 使用onclick事件来调用JavaScript函数显示提示框 -->--%>
-    <%--                <img src="../images/箭头 右.svg" style="height: 100%; width: 100%" onclick="showTooltip()">--%>
-    <%--            </div>--%>
-            </div>
-
-            <div class="info-item">
-                <label for="gender">性别:</label>
-                <%-- 后端需要将用户名显示在id="genderInput"的label上--%>
-<%--                <label id="gender" class="special-label" >男</label>--%>
-<%--                <select id="genderSelect" name="genderSelect" required style=" display: none;">--%>
-<%--                    <option value="男" style="color: #bfbfbf;">男</option>--%>
-<%--                    <option value="女" style="color: #bfbfbf;">女</option>--%>
-<%--                </select>--%>
-<%--                <div style="height: 60%; width:10%;">--%>
-<%--                    <button id="confirmButtonGender" onclick="saveGender()" style=" display: none; background-color: rgba(255, 255, 255, 0.5); color: white">确认</button>--%>
-<%--                    <button id="cancelButtonGender" onclick="cancelEditGender()" style=" display: none; background-color: rgba(255, 255, 255, 0.5); color: white">取消</button>--%>
-<%--                    <img src="../images/箭头 右.svg" id="editButtonGender" onclick="enableEditGender()" style="height: 100%; width: 100%">--%>
-<%--                </div>--%>
-                <select id="gender" name="gender">
-                    <c:if test="${user.sex == '男'}">
-                        <option value="male" selected>男</option>
-                        <option value="female">女</option>
-                    </c:if>
-                    <c:if test="${user.sex == '女'}">
-                        <option value="male">男</option>
-                        <option value="female" selected>女</option>
-                    </c:if>
-                </select>
-            </div>
-
-
-            <div class="info-item">
-                <label for="birthday">生日日期:</label>
-
-                <%-- 后端需要将生日显示在id="genderInput"的label上--%>
-<%--                <label id="birthday" class="special-label" >2002-12-11</label>--%>
-                <input type="date" id="birthday" name="birthday" value="${user.birthday}" />
-            </div>
-
-            <div class="info-item">
-                <label for="password">密码:</label>
-<%--                <img src="../images/箭头 右.svg" onclick="redirectToChangePasswordPage()" style="cursor: pointer;">--%>
-                <input type="text" id="password" name="password" value="${user.password}" />
-            </div>
-            <div style="float:right">
-                <input type="submit" value="提交" class="submitbtn"/>
+            <table style="width: 100%;color: white;border-collapse: collapse;" class="formgroup">
+                <tr>
+                    <td colspan="2" class="inputtitle" style="width: 50%;">昵称</td>
+                    <td colspan="2" class="inputtitle">生日</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="text" value="${user.username}" required readonly class="custom-select">
+                    </td>
+                    <td colspan="2">
+                        <input type="date" value="${user.birthday}" required class="custom-select" name="birthday">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="inputtitle" style="width: 25%">密码</td>
+                    <td class="inputtitle">性别</td>
+                    <td class="inputtitle" style="width: 25%">头像</td>
+                    <td class="inputtitle">预览</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" value="${user.password}" required class="custom-select" name="password">
+                    </td>
+                    <td>
+                        <select id="gender" name="gender" class="custom-select">
+                            <c:if test="${user.sex == '男'}">
+                                <option value="male" selected>男</option>
+                                <option value="female">女</option>
+                            </c:if>
+                            <c:if test="${user.sex == '女'}">
+                                <option value="male">男</option>
+                                <option value="female" selected>女</option>
+                            </c:if>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="file" id="avatar" name="avatar" accept="image/*" onchange="previewAvatar(event)" class="custom-select" required/>
+                    </td>
+                    <td>
+                        <img id="avatarPreview" src="${user.userimgurl}" style="width: 70px; height: 70px;">
+                    </td>
+                </tr>
+            </table>
+            <hr class="paradivide">
+            <div style="text-align: right">
+                <input class="submit-button" type="submit" value="提交">
             </div>
         </form>
     </div>
 
+
 </div>
+
 <script>
     function previewAvatar(event) {
         var input = event.target;
@@ -129,211 +191,6 @@
             };
             reader.readAsDataURL(input.files[0]);
         }
-    }
-
-    function selectAvatar() {
-        const avatarImageDiv = document.getElementById('avatarImageDiv');
-        const avatarImage = document.getElementById('avatarImage');
-        const avatarImageInputDiv = document.getElementById('avatarImageInputDiv');
-        const avatarImageInput = document.getElementById('avatarImageInput');
-        const confirmButtonAvatar = document.getElementById('confirmButtonAvatar');
-        const cancelButtonAvatar = document.getElementById('cancelButtonAvatar');
-        const editButtonAvatar = document.getElementById('editButtonAvatar');
-
-        avatarImageDiv.style.display = 'none';
-        avatarImageInputDiv.style.display = 'inline-block';
-        avatarImageInput.src = avatarImage.src;
-        editButtonAvatar.style.display = 'none'; // 隐藏箭头
-        confirmButtonAvatar.style.display = 'inline-block'; // 显示确认按钮
-        cancelButtonAvatar.style.display = 'inline-block'; // 显示取消按钮
-
-        //借助file类型的input自带的文件选择框，用完即删 隐藏起来
-        const input = document.createElement('input');
-        input.type = 'file';
-        input.accept = 'image/*';
-        input.style.display = 'none';
-
-        // 监听文件选择事件
-        input.addEventListener('change', handleAvatarChange);
-
-        // 将input元素添加到页面
-        document.body.appendChild(input);
-
-        // 触发文件选择对话框
-        input.click();
-
-        // 删除添加的input元素，避免页面上多余的元素
-        input.remove();
-    }
-
-    function handleAvatarChange(event) {
-        const avatarImageInput = document.getElementById('avatarImageInput');
-        const file = event.target.files[0]; // 获取用户选择的文件
-        const reader = new FileReader(); // 创建FileReader对象
-
-        // 当文件读取完成时触发的事件
-        reader.onload = function (e) {
-            avatarImageInput.src = e.target.result; // 将读取的文件内容作为数据URL分配给头像图片的src属性
-        }
-
-        reader.readAsDataURL(file); // 将文件内容读取为数据URL
-    }
-
-    function saveAvatar(){
-        const avatarImageDiv = document.getElementById('avatarImageDiv');
-        const avatarImage = document.getElementById('avatarImage');
-        const avatarImageInputDiv = document.getElementById('avatarImageInputDiv');
-        const avatarImageInput = document.getElementById('avatarImageInput');
-        const confirmButtonAvatar = document.getElementById('confirmButtonAvatar');
-        const cancelButtonAvatar = document.getElementById('cancelButtonAvatar');
-        const editButtonAvatar = document.getElementById('editButtonAvatar');
-
-        avatarImageDiv.style.display = 'inline-block';
-        avatarImageInputDiv.style.display = 'none';
-        avatarImage.src=avatarImageInput.src;
-        editButtonAvatar.style.display = 'inline-block'; // 显示箭头
-        confirmButtonAvatar.style.display = 'none'; // 隐藏确认按钮
-        cancelButtonAvatar.style.display = 'none'; // 隐藏取消按钮
-    }
-    function cancelEditAvatar(){
-        const avatarImageDiv = document.getElementById('avatarImageDiv');
-        const avatarImageInputDiv = document.getElementById('avatarImageInputDiv');
-        const confirmButtonAvatar = document.getElementById('confirmButtonAvatar');
-        const cancelButtonAvatar = document.getElementById('cancelButtonAvatar');
-        const editButtonAvatar = document.getElementById('editButtonAvatar');
-
-        avatarImageDiv.style.display = 'inline-block';
-        avatarImageInputDiv.style.display = 'none';
-        editButtonAvatar.style.display = 'inline-block'; // 显示箭头
-        confirmButtonAvatar.style.display = 'none'; // 隐藏确认按钮
-        cancelButtonAvatar.style.display = 'none'; // 隐藏取消按钮
-    }
-
-</script>
-<script>
-    function showTooltip() {
-        alert("昵称不能被修改！");
-    }
-</script>
-<script>
-    // 启用性别编辑
-    function enableEditGender() {
-        const gender = document.getElementById('gender');
-        const genderSelect = document.getElementById('genderSelect');
-        const confirmButtonGender = document.getElementById('confirmButtonGender');
-        const cancelButtonGender = document.getElementById('cancelButtonGender');
-        const editButtonGender = document.getElementById('editButtonGender');
-
-        genderSelect.value=gender.textContent;
-        gender.style.display = 'none';
-        genderSelect.style.display = 'block';
-        editButtonGender.style.display = 'none'; // 隐藏箭头
-        confirmButtonGender.style.display = 'inline-block'; // 显示确认按钮
-        cancelButtonGender.style.display = 'inline-block'; // 显示取消按钮
-    }
-
-    // 保存性别
-    function saveGender() {
-        const gender = document.getElementById('gender');
-        const genderSelect = document.getElementById('genderSelect');
-        const confirmButtonGender = document.getElementById('confirmButtonGender');
-        const cancelButtonGender = document.getElementById('cancelButtonGender');
-        const editButtonGender = document.getElementById('editButtonGender');
-
-        gender.textContent=genderSelect.value; // 将选中的值设置为input的value
-        gender.style.display = 'block';
-        genderSelect.style.display = 'none';
-        confirmButtonGender.style.display = 'none'; // 隐藏确认按钮
-        cancelButtonGender.style.display = 'none'; // 隐藏取消按钮
-        editButtonGender.style.display = 'inline-block'; // 显示箭头
-    }
-
-    // 取消编辑性别
-    function cancelEditGender() {
-        const gender = document.getElementById('gender');
-        const genderSelect = document.getElementById('genderSelect');
-        const confirmButtonGender = document.getElementById('confirmButtonGender');
-        const cancelButtonGender = document.getElementById('cancelButtonGender');
-        const editButtonGender = document.getElementById('editButtonGender');
-
-        gender.style.display = 'block';
-        genderSelect.style.display = 'none';
-        confirmButtonGender.style.display = 'none'; // 隐藏确认按钮
-        cancelButtonGender.style.display = 'none'; // 隐藏取消按钮
-        editButtonGender.style.display = 'inline-block'; // 显示编辑按钮
-    }
-</script>
-<!-- 引入jQuery和jQuery UI库 -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
-
-<!-- 引入jQuery UI CSS（用于样式） -->
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/smoothness/jquery-ui.css">
-
-<script>
-    $(document).ready(function () {
-        // 初始化日期选择框
-        $('#birthdayInput').datepicker({
-            dateFormat: 'yy-mm-dd',
-            maxDate: '0',
-            changeYear: true,
-            changeMonth: true,
-            language: 'zh-CN' // 设置语言为中文，确保正确的语言文件被加载
-        });
-    });
-</script>
-<script>
-    // 启用生日编辑
-    function enableEditBirthday() {
-        const birthday = document.getElementById('birthday');
-        const birthdayInput = document.getElementById('birthdayInput');
-        const confirmButtonBirthday = document.getElementById('confirmButtonBirthday');
-        const cancelButtonBirthday = document.getElementById('cancelButtonBirthday');
-        const editButtonBirthday = document.getElementById('editButtonBirthday');
-
-        birthday.style.display = 'none';
-        birthdayInput.style.display = 'inline-block';
-        birthdayInput.value=birthday.textContent;
-        birthdayInput.focus();
-        editButtonBirthday.style.display = 'none';
-        confirmButtonBirthday.style.display = 'inline-block';
-        cancelButtonBirthday.style.display = 'inline-block';
-    }
-
-    // 保存生日
-    function saveBirthday() {
-        const birthday = document.getElementById('birthday');
-        const birthdayInput = document.getElementById('birthdayInput');
-        const confirmButtonBirthday = document.getElementById('confirmButtonBirthday');
-        const cancelButtonBirthday = document.getElementById('cancelButtonBirthday');
-        const editButtonBirthday = document.getElementById('editButtonBirthday');
-
-        birthday.style.display = 'inline-block';
-        birthdayInput.style.display = 'none';
-        birthday.textContent = birthdayInput.value;
-        confirmButtonBirthday.style.display = 'none';
-        cancelButtonBirthday.style.display = 'none';
-        editButtonBirthday.style.display = 'inline-block';
-    }
-
-    // 取消编辑生日
-    function cancelEditBirthday() {
-        const birthday = document.getElementById('birthday');
-        const birthdayInput = document.getElementById('birthdayInput');
-        const confirmButtonBirthday = document.getElementById('confirmButtonBirthday');
-        const cancelButtonBirthday = document.getElementById('cancelButtonBirthday');
-        const editButtonBirthday = document.getElementById('editButtonBirthday');
-
-        birthday.style.display = 'inline-block';
-        birthdayInput.style.display = 'none';
-        confirmButtonBirthday.style.display = 'none';
-        cancelButtonBirthday.style.display = 'none';
-        editButtonBirthday.style.display = 'inline-block';
-    }
-</script>
-<script>
-    function redirectToChangePasswordPage() {
-        window.location.href = "./changPassword.jsp"; // 替换为目标页面的URL
     }
 </script>
 </body>

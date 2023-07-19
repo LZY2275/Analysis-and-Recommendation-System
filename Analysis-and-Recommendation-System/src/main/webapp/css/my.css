@@ -1,10 +1,6 @@
 /*中间半透明的容器样式*/
 .container {
-    position: relative;
-    width: 60%;
-    height: 80%;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    padding: 40px;
 }
 
 /*中间容器中显示内容的部分*/
