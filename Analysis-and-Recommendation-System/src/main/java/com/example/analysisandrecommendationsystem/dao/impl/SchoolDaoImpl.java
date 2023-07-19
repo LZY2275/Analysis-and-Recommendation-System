@@ -32,7 +32,7 @@ public class SchoolDaoImpl implements SchoolDao {
     private final static String DELETESCHOOL = "delete from school where name = ?";
     private final static String UPDATESCHOOL = "update school set `rank` = ?, `type` = ?, heat = ?, telephone = ?, introduction = ?, employmentRatio = ?, goAbroadRatio = ?, enrollmentRatio = ?, sexRatio = ?, location = ?, logo = ? where name = ?";
     private final static String INSERT = "insert into school(`rank`,`type`,heat, telephone, introduction, employmentRatio, goAbroadRatio, enrollmentRatio, sexRatio, location, logo, `name`) values(?,?,?,?,?,?,?,?,?,?,?,?)";
-    private final static String HOTSPOTLIST = "select * from hotspot";
+    private final static String HOTSPOTLIST = "select * from hotspot where `name` = ?";
     @Override
     public List<String> searchByName(String keyword) {
         Connection connection = null;
@@ -354,7 +354,7 @@ public class SchoolDaoImpl implements SchoolDao {
     }
 
     @Override
-    public List<Hotspot> getHotSpotList() {
+    public List<Hotspot> getHotSpotList(String name) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -362,6 +362,7 @@ public class SchoolDaoImpl implements SchoolDao {
         try {
             connection = C3P0Util.getConnection();
             preparedStatement = connection.prepareStatement(HOTSPOTLIST);
+            preparedStatement.setString(1,name);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 Hotspot hotspot = new Hotspot();

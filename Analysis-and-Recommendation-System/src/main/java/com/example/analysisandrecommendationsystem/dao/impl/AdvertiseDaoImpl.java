@@ -18,6 +18,7 @@ public class AdvertiseDaoImpl implements AdvertiseDao {
     private final static String UPDATE = "update advertisement set contenttext = ? where title = ? and name = ?";
 
     private final static String DELETE = "delete from advertisement where title = ? and name = ?";
+    private final static String INSERT = "insert into advertisement(title, contenttext, `name`) values(?, ?, ?)";
     @Override
     public List<Advertisement> list() {
         Connection connection = null;
@@ -105,6 +106,24 @@ public class AdvertiseDaoImpl implements AdvertiseDao {
             }else {
                 System.out.println("删除成功");
             }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            C3P0Util.release(null,preparedStatement,connection);
+        }
+    }
+
+    @Override
+    public void insertAd(String name, String title, String contenttext) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = C3P0Util.getConnection();
+            preparedStatement = connection.prepareStatement(INSERT);
+            preparedStatement.setString(1,title);
+            preparedStatement.setString(2,contenttext);
+            preparedStatement.setString(3,name);
+            preparedStatement.execute();
         }catch (Exception e){
             e.printStackTrace();
         }finally {

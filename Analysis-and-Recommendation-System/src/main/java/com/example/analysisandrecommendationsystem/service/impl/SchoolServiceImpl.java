@@ -69,7 +69,7 @@ public class SchoolServiceImpl implements SchoolService {
     }
 
     @Override
-    public List<Hotspot> getHotSpotList() {
-        return schoolDao.getHotSpotList();
+    public List<Hotspot> getHotSpotList(String name) {
+        return schoolDao.getHotSpotList(name);
     }
 }
