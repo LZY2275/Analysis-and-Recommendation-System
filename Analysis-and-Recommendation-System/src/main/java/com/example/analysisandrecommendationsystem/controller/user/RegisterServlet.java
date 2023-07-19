@@ -32,9 +32,9 @@ public class RegisterServlet extends HttpServlet {
                 request.getSession().setAttribute("user", user);
 //                重定向到某个方法
 //                request.getRequestDispatcher("/list").forward(request,response);
-                if(option.equals("管理员操作")){
+                if(option.equals("admin")){
                     request.getSession().removeAttribute("user");
-                    request.getRequestDispatcher("/jsp/manageuser.jsp").forward(request,response);
+                    request.getRequestDispatcher("/userlist").forward(request,response);
                 }else {
                     request.getRequestDispatcher("/search985").forward(request, response);
                 }
@@ -43,7 +43,7 @@ public class RegisterServlet extends HttpServlet {
             else{
                 String errorMessage = "用户名已存在，请选择其他用户名。";
                 request.setAttribute("errorMessage", errorMessage);
-                if(option.equals("管理员操作")){
+                if(option.equals("admin")){
                     request.getRequestDispatcher("/jsp/addnewuser.jsp").forward(request,response);
                 }else {
                     request.getRequestDispatcher("/jsp/register.jsp").forward(request, response);

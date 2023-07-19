@@ -17,22 +17,24 @@
     padding: 25px;
     width: 280px;
     height: 280px;
-    background-color: rgba(33,110,236,1);
+    background-color: #283142;
     position:absolute;
     right: 30px;
     top: 2%;
-    border-radius: 20px;
+    border-radius: 10px;
     /*border: 2px dotted rgba(84,188,189,100);*/
 }
 
 .right2{
+    padding: 25px;
     width:280px;
     height: 280px;
-    background-color: rgba(0,10,123,0.8);
+    background-color: #283142;
     position:absolute;
     right: 30px;
     top: 55%;
-    border: 2px dotted rgba(84,188,189,100);
+    border-radius: 10px;
+    /*border: 2px dotted rgba(84,188,189,100);*/
 }
 
 @font-face {

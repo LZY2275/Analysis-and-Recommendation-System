@@ -13,4 +13,6 @@ public interface AdvertiseService {
     void updateAdInfo(String title, String content, String name);
 
     void deleteAdInfo(String title, String name);
+
+    void insertAd(String name, String title, String contenttext);
 }

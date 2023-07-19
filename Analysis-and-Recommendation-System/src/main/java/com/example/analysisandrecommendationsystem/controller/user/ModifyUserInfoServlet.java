@@ -29,10 +29,10 @@ public class ModifyUserInfoServlet extends HttpServlet {
 
         // 获取提交来的信息
         Part avatarPart = request.getPart("avatar");
-        String ava = request.getParameter("avatar");
+//        String ava = request.getParameter("avatar");
 
         System.out.println(avatarPart);
-        System.out.println(ava);
+//        System.out.println(ava);
 
         // 生成唯一的文件名
         String fileName = UUID.randomUUID().toString() + "-" + avatarPart.getSubmittedFileName();

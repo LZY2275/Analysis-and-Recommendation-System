@@ -292,14 +292,15 @@
                     emphasis: {
                         // color: '##448aff'
                         shadowBlur: '20',
-                        shadowColor: 'rgb(255,255,255)',
-                        focus: 'series'
+                        shadowColor: '#696e7c',
+                        focus: 'series',
+                        color: '#fff'
                     },
                     //颜色样式部分
                     normal: {
                         color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-                            { offset: 0, color: "#b4dcf1" },
-                            { offset: 1, color: "#FFFFFF" },
+                            { offset: 0, color: "#545b6d" },
+                            { offset: 1, color: "#696e7c" },
                         ]),
                     },
                 },
@@ -407,13 +408,14 @@
                     itemStyle: {
                         emphasis: {
                             shadowBlur: '20',
-                            shadowColor: 'rgb(0,147,252)'
+                            shadowColor: '#696e7c',
+                            color: '#fff'
                         },
                         //颜色样式部分
                         normal: {
                             color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-                                { offset: 0, color: "#3977E6" },
-                                { offset: 1, color: "#37BBF8" },
+                                { offset: 0, color: "#545b6d" },
+                                { offset: 1, color: "#696e7c" },
                             ]),
                         },
                     },

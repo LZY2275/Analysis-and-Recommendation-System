@@ -12,6 +12,10 @@
     <title>热词信息库</title>
 </head>
 <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
     table {
         width: 100%;
         border-collapse: collapse;
@@ -19,13 +23,51 @@
         color: white;
     }
 
-    th, td {
-        padding: 10px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
+
+    .tablehead{
+        background-color: #323d51;
+        color: #5e6c7e;
+        height: 20px;
+        font-size: small;
     }
-    th {
-        background-color: rgba(255,255,255,0.2);
+    .tablebody{
+        background-color: #283142;
+
+    }
+    .tablebody:hover{
+        border-left: 2px solid #714146;
+    }
+    .highlight{
+        font-weight: bold;
+    }
+    .emit{
+        font-size: small;
+        color:#5e6c7e ;
+    }
+    .note{
+        font-size: xx-small;
+        color: #646975;
+    }
+    .paradivide{
+        border: none;
+        margin: 10px 0;
+    }
+    .submit-button{
+        background-color: #515195;
+        color: white;
+        border-radius: 100px;
+        padding: 10px 20px;
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: small;
+        font-weight: bold;
+        cursor: pointer;
+        width: 80px;
+    }
+    .container{
+        padding: 40px 40px 0  40px
     }
     button {
         border: none;
@@ -38,35 +80,42 @@
         text-align: center;
         vertical-align: middle;
     }
+    th{
+        padding: 8px;
+    }
+    td{
+        padding: 8px;
+    }
 </style>
 <body>
-<button class="btn" style="background-color: #3c8dd8;    width: 60px;
-    float: right;"><a href="/jsp/addnewhotspot.jsp" style="text-decoration: none;color: white">添加</a></button>
-<div style="width:100%;">
-    <table>
-        <thead>
-        <tr>
-            <th style="width:150px;">学校名称</th>
-            <th>热词</th>
-            <th>出现比例</th>
-            <th style="width: 50px">操作</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${hotspotList}" var="item">
+<div class="container">
+    <button class="submit-button" style="float: right;"><a href="/jsp/addnewhotspot.jsp" style="text-decoration: none;color: white">添加</a></button>
+    <div style="width:100%;">
+        <table>
+            <thead class="tablehead">
             <tr>
-                <td>${item.name}</td>
-                <td>${item.word}</td>
-                <td>${item.heatRatio}</td>
-                <td>
-                    <button class="btn" style="background-color: #45a049"><a href="/gethotspotinfo?name=${item.name}&word=${item.word}" style="text-decoration: none; color: white;">编辑</a></button>
-                    <button class="btn" style="background-color: red"><a href="/deletehotspot?name=${item.name}&word=${item.word}" style="text-decoration: none; color: white;">删除</a></button>
-                </td>
+                <th style="width:150px;">学校名称</th>
+                <th>热词</th>
+                <th>出现比例</th>
+                <th style="width: 50px">操作</th>
             </tr>
-        </c:forEach>
+            </thead>
+            <tbody>
+            <c:forEach items="${hotspotList}" var="item">
+                <tr class="tablebody">
+                    <td class="emit">${item.name}</td>
+                    <td>${item.word}</td>
+                    <td class="highlight">${item.heatRatio}</td>
+                    <td>
+                        <button class="btn" style="background-color: #45a049"><a href="/gethotspotinfo?name=${item.name}&word=${item.word}" style="text-decoration: none; color: white;">编辑</a></button>
+                        <button class="btn" style="background-color: red"><a href="/deletehotspot?name=${item.name}&word=${item.word}" style="text-decoration: none; color: white;">删除</a></button>
+                    </td>
+                </tr>
+            </c:forEach>
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 </body>
