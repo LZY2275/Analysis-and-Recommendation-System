@@ -16,27 +16,19 @@
     <table>
         <thead>
         <tr>
-            <th>用户昵称</th>
-            <th style="width: 80px; text-align: center;">反馈内容</th>
-            <th>处理方式</th>
-            <th>处理</th>
+            <th style="width: 10%; text-align: center;">用户昵称</th>
+            <th style="width: 60%; text-align: center;">反馈内容</th>
+            <th style="width: 20%; text-align: center;">处理方式</th>
+            <th style="width: 10%; text-align: center;">处理</th>
         </tr>
         </thead>
         <tbody>
-        <%--    <c:forEach items="${userList}" var="item">-->
-        <%--      <tr>--%>
-        <%--        <td><img src="${item.userimgurl}" width="50px" height="50px"></td>--%>
-        <%--        <td>${item.username}</td>--%>
-        <%--        <td>${item.password}</td>--%>
-        <%--        <td>${item.sex}</td>--%>
-        <%--        <td>${item.birthday}</td>--%>
-        <%--        <td>--%>
-        <%--          <button class="btn" style="background-color: #45a049"><a href="/getuserinfo?username=${item.username}" style="text-decoration: none; color: white;">编辑</a></button>--%>
-        <%--          <button class="btn" style="background-color: red"><a href="/deleteuser?username=${item.username}" style="text-decoration: none; color: white;">注销</a></button>--%>
-        <%--        </td>--%>
-        <%--      </tr>--%>
-        <%--    </c:forEach>--%>
-
+        <tr>
+            <td style="text-align: center;">马硕</td>
+            <td style="text-align: center;">吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱吱在在在在在在在在在在在在在在在在在在在</td>
+            <td style="text-align: center;">提交上级</td>
+            <td><button class="btn" style="background-color: #45a049"><a style="text-decoration: none; color: white;">处理</a></button></td>
+        </tr>
         </tbody>
     </table>
 </div>
