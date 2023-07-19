@@ -54,6 +54,10 @@
         font-weight: bold;
         cursor: pointer;
     }
+    .emit{
+        font-size: small;
+        color:#5e6c7e ;
+    }
 </style>
 <body>
 <div style="color:white;padding: 40px">
@@ -61,9 +65,11 @@
     <hr class="paradivide">
     <p class="note">在这里，你可以查阅不同学校的广告...</p>
     <hr class="paradivide">
-    <div style="text-align: right">
-        <a href="/jsp/addnewad.jsp"><input class="submit-button" style="width: 80px" value="添加"></a>
-    </div>
+    <c:if test="${isadmin}">
+        <div style="text-align: right">
+            <a href="/jsp/addnewad.jsp"><input class="submit-button" style="width: 80px" value="添加"></a>
+        </div>
+    </c:if>
     <div style="width: 100%">
         <!--<div class="search-container" style="width: 170px;float: right;">
             <input type="search" name="keyword" id="keyword" class="search-input">
@@ -87,7 +93,7 @@
                         <button class="delete-button"><a href="/deleteadinfo?title=${aditem.title}&name=${aditem.name}" style="text-decoration: none; color: white;">删除</a></button>
                     </c:if>
                     <c:if test="${!isadmin}">
-                        无权限操作！
+                        <p class="emit">无权限操作！</p>
                     </c:if>
                 </td>
             </tr>

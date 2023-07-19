@@ -396,10 +396,10 @@
         <a style="text-decoration: none" href="universityinfo.jsp"><div class="vertical-text flex3 tabs" >
           <span>基本信息</span>
         </div></a>
-        <a style="text-decoration: none" href=""><div class="vertical-text flex3 tabs" style="margin-top: 0.3vh">
+        <a style="text-decoration: none" href="universityenroll.jsp"><div class="vertical-text flex3 tabs" style="margin-top: 0.3vh">
           <span>招生信息</span>
         </div></a>
-        <a style="text-decoration: none" href=""><div class="vertical-text flex3 tabs" style="margin-top: 0.3vh">
+        <a style="text-decoration: none" href="universityanalysis.jsp"><div class="vertical-text flex3 tabs" style="margin-top: 0.3vh">
           <span>对比分析</span>
         </div></a>
       </div>

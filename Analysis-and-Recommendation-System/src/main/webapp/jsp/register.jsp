@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../css/authentication.css">
     <style>
         body {
-            /*background-image: url('../images/数据大屏背景/bg.jpg');*/
+            background-image: url('../images/数据大屏背景/bg.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             height: 100vh;

@@ -62,7 +62,7 @@
             <label style="display: flex; align-items: flex-start; margin-left: 0px;">记住密码</label>
         </div>
         <div class="help-links">
-            <a href="../jsp/forgotPassword.jsp" style="color: white; text-decoration: none;">忘记密码</a>
+            <a href="../jsp/forgotpassword.jsp" style="color: white; text-decoration: none;">忘记密码</a>
             <a href="../jsp/register.jsp" style="color: white; text-decoration: none;">注册账号</a>
         </div>
     </form>
